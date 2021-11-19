@@ -19,9 +19,9 @@
 #### 4.在接收机设置页选择要控制的接收机（可以多选，同时控制）
 
 ### 应用截图
-![Screenshot_1637312138](https://user-images.githubusercontent.com/5453963/142594431-38a08f9f-4fb7-4371-b794-743396131ebe.png)
-![Screenshot_1637312269](https://user-images.githubusercontent.com/5453963/142594672-eec34da3-b504-4a14-b809-ed4d76623f46.png)
-![Screenshot_1637312223](https://user-images.githubusercontent.com/5453963/142594583-b7c1eca7-2707-4074-875e-f2fb33132a2e.png)
+![Screenshot_1637312138](Screenshot_1637312138.png)
+![Screenshot_1637312269](Screenshot_1637312223.png)
+![Screenshot_1637312223](Screenshot_1637312269.png)
 Watch the video (https://www.bilibili.com/video/BV1NZ4y1F7ZE?spm_id_from=333.999.0.0)
 
 
