@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">OpenRC</string>
+    <string name="recv_title">接收器</string>
+    <string name="setting_save">保存</string>
+    <string name="setting_delete">删除</string>
+    <string name="recv_not_select">接收器未选择</string>
+    <string name="power_title">电量:</string>
+    <string name="device_time">刷新时间:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

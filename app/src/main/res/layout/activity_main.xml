@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".activity.MainActivity">
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/goTcp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="tcp" />
+            <TextView
+                android:id="@+id/ip_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/broadcast_rx_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="broadcast_rx_bt" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="Turn on"
+                    android:id="@+id/bt_led_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+
+                    android:text="Turn off"
+                    android:id="@+id/bt_led_off"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <SeekBar
+                android:layout_margin="20dp"
+                android:id="@+id/sb_servo"
+                android:max="180"
+                android:min="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <SeekBar
+                android:layout_margin="20dp"
+                android:id="@+id/sb_led"
+                android:max="100"
+                android:min="0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <EditText
+            android:layout_marginTop="10dp"
+            android:id="@+id/ip_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10.2.8.163" />
+
+        <EditText
+            android:id="@+id/port_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12345" />
+
+        <EditText
+            android:id="@+id/msg_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hello" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/get_rtt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测算RTT" />
+
+            <TextView
+                android:textSize="8sp"
+                android:id="@+id/rtt_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp" />
+            <Button
+                android:layout_margin="10dp"
+                android:id="@+id/send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="send" />
+            <Button
+                android:id="@+id/sendBroadcast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sendBroadcast" />
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/rec_port_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="12345" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/send_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="原文回复" />
+            <TextView
+                android:layout_margin="10dp"
+                android:id="@+id/rcv_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/recv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="recv" />
+
+        </LinearLayout>
+
+        <com.wangzhen.openrc.view.JoystickView
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+    </LinearLayout>
+</ScrollView>
+
