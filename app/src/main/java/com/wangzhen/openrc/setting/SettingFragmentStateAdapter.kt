@@ -8,14 +8,15 @@ class SettingFragmentStateAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount(): Int {
-        return 3
+        return 4
     }
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> RevicerSettingFragment()
             1 -> InputSettingFragment()
-            else -> MixSettingFragment()
+            2 -> MixSettingFragment()
+            else -> AutoResetSettingFragment()
         }
     }
 }

@@ -19,13 +19,16 @@ import com.wangzhen.openrc.data.InputSetting
 import com.wangzhen.openrc.dialog.InputDialog
 import com.wangzhen.openrc.dialog.RemindDialog
 import com.wangzhen.openrc.dialog.SelectListDialog
+import com.wangzhen.openrc.vm.SettingViewModel
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.fragment_input.view.*
 import kotlinx.android.synthetic.main.fragment_revicer_setting.view.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 class InputSettingFragment : Fragment() {
     var rvList: ArrayList<RecyclerView> = ArrayList()
+    val settingViewModel: SettingViewModel by sharedViewModel()
     lateinit var rootView: View
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +61,9 @@ class InputSettingFragment : Fragment() {
                         Data.db.inputSettingDao().insertAll(inputSetting)
                         resetPos()
                         loadSettingDbData()
+                        activity?.runOnUiThread {
+                            settingViewModel.modelListChange.value = true
+                        }
                     }
                 }.show(it1, "xxx")
             }
@@ -71,6 +77,7 @@ class InputSettingFragment : Fragment() {
                             Data.db.inputSettingDao().deleteByName(it.name)
                             resetPos()
                             loadSettingDbData()
+                            settingViewModel.modelListChange.value = true
                         }
                     }
                 }.show(it1, "xxx")
@@ -141,7 +148,7 @@ class InputSettingFragment : Fragment() {
 
         rootView.model_rv.itemDecorationCount.takeIf { it <= 0 }?.let {
             val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-            divider.setDrawable(ContextCompat.getDrawable(context!!, R.drawable.custom_divider)!!)
+            divider.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.custom_divider)!!)
             rootView.model_rv.addItemDecoration(divider)
         }
         rootView.model_rv.adapter = userModelAdapter
@@ -184,7 +191,7 @@ class InputSettingFragment : Fragment() {
                 Data.gpio2InputList[it] = selectPos
                 adapter.notifyDataSetChanged()
             }
-                .show(activity!!.supportFragmentManager, "")
+                .show(requireActivity().supportFragmentManager, "")
         }
     }
 
@@ -200,7 +207,7 @@ class InputSettingFragment : Fragment() {
                 Data.gpio2PwmList[it] = selectPos
                 adapter.notifyDataSetChanged()
             }
-                .show(activity!!.supportFragmentManager, "")
+                .show(requireActivity().supportFragmentManager, "")
         }
     }
 
@@ -217,7 +224,7 @@ class InputSettingFragment : Fragment() {
                 Data.gpio2DirectionList[pos] = selectPos
                 adapter.notifyDataSetChanged()
             }
-                .show(activity!!.supportFragmentManager, "")
+                .show(requireActivity().supportFragmentManager, "")
         }
     }
 

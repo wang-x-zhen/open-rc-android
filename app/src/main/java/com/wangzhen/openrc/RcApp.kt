@@ -5,6 +5,10 @@ import com.joanzapata.iconify.Iconify
 import com.joanzapata.iconify.fonts.*
 import com.wangzhen.openrc.utils.SummerTools.runOnIo
 import com.wangzhen.openrc.data.Data
+import com.wangzhen.openrc.di.appModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 
 /**
@@ -30,6 +34,11 @@ class RcApp : Application() {
             Data.db.inputSettingDao().getAll()?.takeIf { !it.isNullOrEmpty() }?.let {
                 Data.loadSetting(it[0])
             }
+        }
+        startKoin {
+            androidLogger()
+            androidContext(this@RcApp)
+            modules(appModule)
         }
     }
 }

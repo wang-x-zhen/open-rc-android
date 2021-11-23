@@ -14,4 +14,5 @@ class InputSetting {
     var gpio2InputList: ArrayList<Int> = ArrayList()
     var gpio2PwmList: ArrayList<Int> = ArrayList()
     var gpio2DirectionList: ArrayList<Int> = ArrayList()
+    var autoResetList: ArrayList<Int> = ArrayList() // 自动会中
 }
