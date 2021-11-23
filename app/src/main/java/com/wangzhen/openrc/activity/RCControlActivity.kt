@@ -1,5 +1,6 @@
 package com.wangzhen.openrc.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -79,6 +80,7 @@ class RCControlActivity : AppCompatActivity() {
         updateDevice()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_r_c_control)
@@ -143,13 +145,13 @@ class RCControlActivity : AppCompatActivity() {
 
 
         settingIcon.also { iconTextView ->
-            iconTextView.text = "{${EntypoIcons.entypo_tools.key()}}"
+            iconTextView.text = "{${SimpleLineIconsIcons.icon_settings.key()}}"
         }.setOnClickListener {
             startActivity(Intent(this, SettingActivity::class.java))
         }
     }
 
-    fun setAutoReset() {
+    private fun setAutoReset() {
         joystickViewLeft.setAutoBackY(Data.autoResetList[0] == 1)
         joystickViewLeft.setAutoBackX(Data.autoResetList[1] == 1)
         joystickViewRight.setAutoBackY(Data.autoResetList[2] == 1)
