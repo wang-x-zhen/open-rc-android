@@ -22,13 +22,14 @@ import com.wangzhen.openrc.dialog.SelectListDialog
 import com.wangzhen.openrc.vm.SettingViewModel
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.fragment_input.view.*
+import kotlinx.android.synthetic.main.fragment_input.view.model_rv
 import kotlinx.android.synthetic.main.fragment_revicer_setting.view.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 class InputSettingFragment : Fragment() {
     var rvList: ArrayList<RecyclerView> = ArrayList()
-    val settingViewModel: SettingViewModel by sharedViewModel()
+    private val settingViewModel: SettingViewModel by sharedViewModel()
     lateinit var rootView: View
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +42,16 @@ class InputSettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRvList()
+        rootView.model_rv.itemDecorationCount.takeIf { it <= 0 }?.let {
+            val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            divider.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.custom_divider)!!)
+            rootView.model_rv.addItemDecoration(divider)
+        }
+        rootView.auto_reset_rv.itemDecorationCount.takeIf { it <= 0 }?.let {
+            val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            divider.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.custom_divider)!!)
+            rootView.model_rv.addItemDecoration(divider)
+        }
         rootView.saveSetting.setOnClickListener {
             var _name = ""
             Data.mInputSetting?.let {
@@ -54,6 +65,7 @@ class InputSettingFragment : Fragment() {
                     gpio2InputList = Data.gpio2InputList
                     gpio2PwmList = Data.gpio2PwmList
                     gpio2DirectionList = Data.gpio2DirectionList
+                    autoResetList = Data.autoResetList
                 }
                 InputDialog(_name) {
                     inputSetting.name = it
@@ -91,6 +103,7 @@ class InputSettingFragment : Fragment() {
         initInput()
         initPwmMap()
         initDirectionMap()
+        initAutoResetList()
         linkRvList()
     }
 
@@ -146,11 +159,7 @@ class InputSettingFragment : Fragment() {
             this.orientation = LinearLayoutManager.VERTICAL
         }
 
-        rootView.model_rv.itemDecorationCount.takeIf { it <= 0 }?.let {
-            val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-            divider.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.custom_divider)!!)
-            rootView.model_rv.addItemDecoration(divider)
-        }
+
         rootView.model_rv.adapter = userModelAdapter
         userModelAdapter.setOnClick { pos ->
             runOnIo {
@@ -227,6 +236,15 @@ class InputSettingFragment : Fragment() {
                 .show(requireActivity().supportFragmentManager, "")
         }
     }
+
+    private fun initAutoResetList() {
+        rootView.auto_reset_rv.layoutManager = LinearLayoutManager(context).apply {
+            this.orientation = LinearLayoutManager.VERTICAL
+        }
+
+        rootView.auto_reset_rv.adapter = InputAdapter()
+    }
+
 
     private fun linkRvList() {
         rvList.apply {

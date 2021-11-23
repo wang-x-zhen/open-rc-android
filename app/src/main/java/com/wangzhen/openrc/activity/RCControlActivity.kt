@@ -149,9 +149,17 @@ class RCControlActivity : AppCompatActivity() {
         }
     }
 
+    fun setAutoReset() {
+        joystickViewLeft.setAutoBackY(Data.autoResetList[0] == 1)
+        joystickViewLeft.setAutoBackX(Data.autoResetList[1] == 1)
+        joystickViewRight.setAutoBackY(Data.autoResetList[2] == 1)
+        joystickViewRight.setAutoBackX(Data.autoResetList[3] == 1)
+    }
+
     override fun onResume() {
         super.onResume()
         updateDevice()
+        setAutoReset()
     }
 
     private fun updateDevice() {

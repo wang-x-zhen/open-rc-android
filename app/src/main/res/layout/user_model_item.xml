@@ -12,14 +12,14 @@
 
     <TextView
         android:id="@+id/tv_model_name"
-        android:layout_width="120dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:background="@drawable/status_tv_bg"
         android:clickable="true"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="@dimen/item_name_size"
         tools:text="model name"
         android:focusable="true" />
 

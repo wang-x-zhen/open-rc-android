@@ -4,61 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/rc_tv_color"
     android:orientation="horizontal"
     android:paddingStart="6dp"
     android:paddingEnd="6dp"
-    android:background="@color/rc_tv_color"
     tools:context=".setting.SettingActivity">
 
     <LinearLayout
-        android:layout_marginStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
+
             <TextView
-                android:layout_weight="1"
-                android:textColor="@color/white"
                 android:id="@+id/gpio_setting_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="通道设置" />
+                android:layout_weight="1"
+                android:text="通道设置"
+                android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/saveSetting"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="5dp"
+                android:background="@drawable/button_bg"
                 android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:text="@string/setting_save"
                 android:textColor="@color/white"
-                android:id="@+id/saveSetting"
-                android:textSize="10sp"
-                android:background="@drawable/button_bg"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/deleteSetting"
                 android:layout_width="40dp"
                 android:layout_height="20dp"
-                android:focusable="true" />
-            <TextView
-                android:visibility="gone"
                 android:layout_marginStart="5dp"
+                android:background="@drawable/button_red_bg"
                 android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:text="@string/setting_delete"
                 android:textColor="@color/white"
-                android:id="@+id/deleteSetting"
                 android:textSize="10sp"
-                android:background="@drawable/button_red_bg"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:focusable="true" />
+                android:visibility="gone" />
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -69,37 +71,129 @@
             android:orientation="horizontal"
             android:padding="10dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/model_rv"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginStart="4dp"
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/gpio_rv"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="4dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="模型"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/gpio_input_rv"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="2dp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/model_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/gpio_pwm_rv"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="2dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/gpio_direction_rv"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="2dp" />
+                android:layout_marginStart="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GPIO输出口"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gpio_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="通道"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gpio_input_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PWM模式"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gpio_pwm_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="输出反向"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gpio_direction_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="自动回中"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/auto_reset_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

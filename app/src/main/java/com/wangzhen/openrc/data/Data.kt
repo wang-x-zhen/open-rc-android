@@ -28,10 +28,17 @@ object Data {
     var gpio2InputList: ArrayList<Int> = ArrayList()
     var gpio2PwmList: ArrayList<Int> = ArrayList()
     var gpio2DirectionList: ArrayList<Int> = ArrayList()
+    var autoResetList: ArrayList<Int> = ArrayList()
 
     init {
         inputInValidList.apply {
             add(Input().apply { name = "无" })
+        }
+        autoResetList.apply {
+            add(0)
+            add(1)
+            add(1)
+            add(1)
         }
         inputList.apply {
             add(Input().apply { name = "Left  V" })
@@ -86,6 +93,7 @@ object Data {
         gpio2InputList = inputSetting.gpio2InputList
         gpio2PwmList = inputSetting.gpio2PwmList
         gpio2DirectionList = inputSetting.gpio2DirectionList
+        autoResetList = inputSetting.autoResetList
     }
 
     lateinit var db: AppDatabase

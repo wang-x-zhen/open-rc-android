@@ -15,15 +15,25 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="100dp"
         android:layout_gravity="center_vertical"
         android:textColor="@color/white"
-        android:minWidth="@dimen/item_name_min_width"
-        android:textSize="@dimen/item_name_size"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/status_tv_bg"
-        tools:text="model name" />
+        tools:text="Left V" />
+
+    <ToggleButton
+        android:textOff="关"
+        android:textOn="开"
+        app:layout_constraintTop_toTopOf="@+id/tv_name"
+        app:layout_constraintEnd_toEndOf="@+id/tv_name"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+        android:id="@+id/toggleButton"
+        android:layout_width="40dp"
+        android:layout_height="0dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

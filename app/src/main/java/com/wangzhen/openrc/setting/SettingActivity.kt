@@ -24,7 +24,6 @@ class SettingActivity : AppCompatActivity() {
                     0 -> binding.radioGroup.check(R.id.rb1)
                     1 -> binding.radioGroup.check(R.id.rb2)
                     2 -> binding.radioGroup.check(R.id.rb3)
-                    3 -> binding.radioGroup.check(R.id.rb4)
                 }
             }
         })
@@ -33,7 +32,6 @@ class SettingActivity : AppCompatActivity() {
                 R.id.rb1 -> binding.viewPager2.currentItem = 0
                 R.id.rb2 -> binding.viewPager2.currentItem = 1
                 R.id.rb3 -> binding.viewPager2.currentItem = 2
-                R.id.rb4 -> binding.viewPager2.currentItem = 3
             }
         }
     }
