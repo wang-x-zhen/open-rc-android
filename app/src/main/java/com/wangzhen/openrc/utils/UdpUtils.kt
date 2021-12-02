@@ -14,6 +14,7 @@ import kotlin.jvm.Throws
  *  @since : 2021/4/13 xxx
  */
 object UdpUtils {
+    var oldTime = 0L
 
     @JvmStatic
     fun receive(port: Int, onReceive: (ip: String, port: Int, data: String) -> Unit) {
@@ -85,6 +86,10 @@ object UdpUtils {
 
     @JvmStatic
     fun send(ip: String, port: Int, data: String) {
+        if (System.currentTimeMillis() - oldTime < 20) {
+            return
+        }
+        oldTime = System.currentTimeMillis()
         try {
             var sendData = data
             val mSocket = DatagramSocket()
@@ -104,6 +109,7 @@ object UdpUtils {
             e.printStackTrace()
         }
     }
+
     @Throws(IOException::class)
     @JvmStatic
     fun receiveBroadcast(port: Int, onReceive: (data: String, ip: String) -> Unit) {
@@ -131,6 +137,7 @@ object UdpUtils {
         ds.close()
 
     }
+
     const val debug = true
     fun log(msg: String) {
         if (!debug) return

@@ -27,6 +27,7 @@ import org.json.JSONObject
 import com.wangzhen.openrc.view.JoystickView
 import com.wangzhen.openrc.view.OffSetView
 import com.wangzhen.openrc.view.OffSetViewV
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
@@ -178,6 +179,7 @@ class RCControlActivity : AppCompatActivity() {
         }
     }
 
+
     fun send() {
         val port = Rx.port
         if (Data.rxDeviceList.filter { it.isSelect }.isNullOrEmpty()) {
@@ -264,6 +266,21 @@ fun ControlPWM.toData(): String {
                     cmdData.gpio = gpio.name.replace("GPIO ", "").toInt()
                     cmdData.value = v
                     cmdData.pwmMode = Data.gpio2PwmList[gpio.index]
+                    if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("IA")) {
+                        if (v - 90 <= 0) {
+                            cmdData.pwmMode = 2 // GND
+                        } else {
+                            cmdData.pwmMode = 1 // PWM 直接驱动
+                            cmdData.value = (v - 90) * 2
+                        }
+                    } else if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("IB")) {
+                        if (v - 90 <= 0) {
+                            cmdData.pwmMode = 1 // PWM 直接驱动
+                            cmdData.value = abs((v - 90) * 2)
+                        } else {
+                            cmdData.pwmMode = 2 // GND
+                        }
+                    }
                     val jsonObject = JSONObject()
                     jsonObject.put("gpio", cmdData.gpio)
                     jsonObject.put("value", cmdData.value)
@@ -273,9 +290,6 @@ fun ControlPWM.toData(): String {
         }
     }.toString().also {
         UdpUtils.log("-----ControlPWM $it----")
-    }
-    Data.db.inputSettingDao().getAll()?.let {
-
     }
 
 }

@@ -69,6 +69,10 @@ object Data {
         pwmList.apply {
             add(Pwm().apply { name = "PWM 舵机" })
             add(Pwm().apply { name = "PWM 马达" })
+            add(Pwm().apply { name = "IA 1" })
+            add(Pwm().apply { name = "IB 1" })
+            add(Pwm().apply { name = "IA 2" })
+            add(Pwm().apply { name = "IB 2" })
         }
         directionList.apply {
             add(Direction().apply { name = DIRECT.R.v })
