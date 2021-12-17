@@ -183,6 +183,7 @@ class RCControlActivity : AppCompatActivity() {
     fun send() {
         val port = Rx.port
         if (Data.rxDeviceList.filter { it.isSelect }.isNullOrEmpty()) {
+            ControlPWM.toData()
             return
         }
         Thread {
@@ -267,16 +268,20 @@ fun ControlPWM.toData(): String {
                     cmdData.value = v
                     cmdData.pwmMode = Data.gpio2PwmList[gpio.index]
                     if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("IA")) {
-                        if (v - 90 <= 0) {
+                        if (v - 90 < 0) {
                             cmdData.pwmMode = 2 // GND
+                        } else if (v == 90) {
+                            cmdData.pwmMode = 2
                         } else {
                             cmdData.pwmMode = 1 // PWM 直接驱动
                             cmdData.value = (v - 90) * 2
                         }
                     } else if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("IB")) {
-                        if (v - 90 <= 0) {
+                        if (v - 90 < 0) {
                             cmdData.pwmMode = 1 // PWM 直接驱动
-                            cmdData.value = abs((v - 90) * 2)
+                            cmdData.value = -1 * (v - 90) * 2
+                        } else if (v == 90) {
+                            cmdData.pwmMode = 2
                         } else {
                             cmdData.pwmMode = 2 // GND
                         }

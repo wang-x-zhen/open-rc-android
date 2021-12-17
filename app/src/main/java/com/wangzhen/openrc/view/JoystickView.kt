@@ -219,7 +219,7 @@ open class JoystickView : View {
         val x = (touchPointX - padding) * 2000 / (measuredWidth - 2 * padding)
         val y = (touchPointY - padding) * 2000 / (measuredWidth - 2 * padding)
         xyChange?.onXYChange(x.toInt(), y.toInt())
-        log("--------onXYChange----x:$x y:$y---")
+//        log("--------onXYChange----x:$x y:$y---")
         invalidate()
         return true
     }

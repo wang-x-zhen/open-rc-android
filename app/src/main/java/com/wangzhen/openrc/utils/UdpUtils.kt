@@ -1,5 +1,6 @@
 package com.wangzhen.openrc.utils
 
+import android.annotation.SuppressLint
 import android.util.Log
 import com.wangzhen.openrc.activity.UdpSetting
 import java.io.IOException
@@ -16,6 +17,7 @@ import kotlin.jvm.Throws
 object UdpUtils {
     var oldTime = 0L
 
+    @SuppressLint("LongLogTag")
     @JvmStatic
     fun receive(port: Int, onReceive: (ip: String, port: Int, data: String) -> Unit) {
         //创建数据包传输对象DatagramSocket 绑定端口号
@@ -86,10 +88,10 @@ object UdpUtils {
 
     @JvmStatic
     fun send(ip: String, port: Int, data: String) {
-        if (System.currentTimeMillis() - oldTime < 20) {
-            return
-        }
-        oldTime = System.currentTimeMillis()
+//        if (System.currentTimeMillis() - oldTime < 20) {
+//            return
+//        }
+//        oldTime = System.currentTimeMillisllis()
         try {
             var sendData = data
             val mSocket = DatagramSocket()
