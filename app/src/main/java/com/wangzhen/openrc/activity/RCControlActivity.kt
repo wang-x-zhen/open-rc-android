@@ -27,6 +27,7 @@ import org.json.JSONObject
 import com.wangzhen.openrc.view.JoystickView
 import com.wangzhen.openrc.view.OffSetView
 import com.wangzhen.openrc.view.OffSetViewV
+import kotlin.concurrent.thread
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -87,8 +88,12 @@ class RCControlActivity : AppCompatActivity() {
         setContentView(R.layout.activity_r_c_control)
         threadUdpListen = Thread {
             while (true) {
-                UdpUtils.receive(udpReceiverIpListenPort) { ip, _, _ ->
-                    receiverIp = ip
+                try {
+                    UdpUtils.receive(udpReceiverIpListenPort) { ip, _, _ ->
+                        receiverIp = ip
+                    }
+                } catch (e: java.lang.Exception) {
+
                 }
             }
         }
@@ -107,35 +112,30 @@ class RCControlActivity : AppCompatActivity() {
             override fun onXYChange(x: Int, y: Int) {
                 ControlPWM.rightHRaw = x
                 ControlPWM.rightVRaw = y
-                send()
             }
         })
         offSetViewLeftH.setOffsetChange(object : OffSetView.OffsetChange {
             override fun onOffsetChange(x: Int) {
                 offSetViewLeftHTv.text = offSetLeftH.toString()
                 offSetLeftH += x / offSetCoefficient
-                send()
             }
         })
         offSetViewLeftV.setOffsetChange(object : OffSetViewV.OffsetChange {
             override fun onOffsetChange(y: Int) {
                 offSetViewLeftVTv.text = offSetLeftV.toString()
                 offSetLeftV += y / offSetCoefficient
-                send()
             }
         })
         offSetViewRightH.setOffsetChange(object : OffSetView.OffsetChange {
             override fun onOffsetChange(x: Int) {
                 offSetViewRightHTv.text = offSetRightH.toString()
                 offSetRightH += x / offSetCoefficient
-                send()
             }
         })
         offSetViewRightV.setOffsetChange(object : OffSetViewV.OffsetChange {
             override fun onOffsetChange(y: Int) {
                 offSetViewRightVTv.text = offSetRightV.toString()
                 offSetRightV += y / offSetCoefficient
-                send()
             }
         })
         try {
@@ -149,6 +149,16 @@ class RCControlActivity : AppCompatActivity() {
             iconTextView.text = "{${SimpleLineIconsIcons.icon_settings.key()}}"
         }.setOnClickListener {
             startActivity(Intent(this, SettingActivity::class.java))
+        }
+        sendThread()
+    }
+
+    fun sendThread() {
+        thread {
+            while (true){
+                Thread.sleep(30)
+                send()
+            }
         }
     }
 
@@ -270,8 +280,10 @@ fun ControlPWM.toData(): String {
                     if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("IA")) {
                         if (v - 90 < 0) {
                             cmdData.pwmMode = 2 // GND
+                            cmdData.value = 0
                         } else if (v == 90) {
                             cmdData.pwmMode = 2
+                            cmdData.value = 0
                         } else {
                             cmdData.pwmMode = 1 // PWM 直接驱动
                             cmdData.value = (v - 90) * 2
@@ -282,8 +294,10 @@ fun ControlPWM.toData(): String {
                             cmdData.value = -1 * (v - 90) * 2
                         } else if (v == 90) {
                             cmdData.pwmMode = 2
+                            cmdData.value = 0
                         } else {
                             cmdData.pwmMode = 2 // GND
+                            cmdData.value = 0
                         }
                     }
                     val jsonObject = JSONObject()
