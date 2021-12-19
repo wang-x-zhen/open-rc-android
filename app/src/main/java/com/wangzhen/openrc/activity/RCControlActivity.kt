@@ -55,6 +55,7 @@ object ControlPWM {
     var offSetRightH = 0
     var offSetRightV = 0
     var offSetCoefficient = 5
+    var isValid = false
 }
 
 object Rx {
@@ -103,7 +104,7 @@ class RCControlActivity : AppCompatActivity() {
             override fun onXYChange(x: Int, y: Int) {
                 ControlPWM.leftVRaw = y
                 ControlPWM.leftHRaw = x
-                send()
+                ControlPWM.isValid = true
             }
         })
         joystickViewRight.setAutoBackX(true)
@@ -112,30 +113,35 @@ class RCControlActivity : AppCompatActivity() {
             override fun onXYChange(x: Int, y: Int) {
                 ControlPWM.rightHRaw = x
                 ControlPWM.rightVRaw = y
+                ControlPWM.isValid = true
             }
         })
         offSetViewLeftH.setOffsetChange(object : OffSetView.OffsetChange {
             override fun onOffsetChange(x: Int) {
                 offSetViewLeftHTv.text = offSetLeftH.toString()
                 offSetLeftH += x / offSetCoefficient
+                ControlPWM.isValid = true
             }
         })
         offSetViewLeftV.setOffsetChange(object : OffSetViewV.OffsetChange {
             override fun onOffsetChange(y: Int) {
                 offSetViewLeftVTv.text = offSetLeftV.toString()
                 offSetLeftV += y / offSetCoefficient
+                ControlPWM.isValid = true
             }
         })
         offSetViewRightH.setOffsetChange(object : OffSetView.OffsetChange {
             override fun onOffsetChange(x: Int) {
                 offSetViewRightHTv.text = offSetRightH.toString()
                 offSetRightH += x / offSetCoefficient
+                ControlPWM.isValid = true
             }
         })
         offSetViewRightV.setOffsetChange(object : OffSetViewV.OffsetChange {
             override fun onOffsetChange(y: Int) {
                 offSetViewRightVTv.text = offSetRightV.toString()
                 offSetRightV += y / offSetCoefficient
+                ControlPWM.isValid = true
             }
         })
         try {
@@ -155,7 +161,7 @@ class RCControlActivity : AppCompatActivity() {
 
     fun sendThread() {
         thread {
-            while (true){
+            while (true) {
                 Thread.sleep(30)
                 send()
             }
@@ -194,6 +200,9 @@ class RCControlActivity : AppCompatActivity() {
         val port = Rx.port
         if (Data.rxDeviceList.filter { it.isSelect }.isNullOrEmpty()) {
             ControlPWM.toData()
+            return
+        }
+        if (!ControlPWM.isValid) {
             return
         }
         Thread {
@@ -242,6 +251,9 @@ class RCControlActivity : AppCompatActivity() {
 }
 
 fun ControlPWM.toData(): String {
+    if (!isValid) {
+        return ""
+    }
     leftV = (leftVRaw + offSetLeftV) * 180 / 2000
     leftH = (leftHRaw + offSetLeftH) * 180 / 2000
     rightV = (rightVRaw + offSetRightV) * 180 / 2000
