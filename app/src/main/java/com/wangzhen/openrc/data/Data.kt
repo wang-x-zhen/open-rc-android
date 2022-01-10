@@ -29,7 +29,7 @@ object Data {
     var gpio2PwmList: ArrayList<Int> = ArrayList()
     var gpio2DirectionList: ArrayList<Int> = ArrayList()
     var autoResetList: ArrayList<Int> = ArrayList()
-
+    var inputScaleList: java.util.ArrayList<Int> = java.util.ArrayList()
     init {
         inputInValidList.apply {
             add(Input().apply { name = "无" })
@@ -47,6 +47,10 @@ object Data {
             add(Input().apply { name = "Right H" })
         }.also {
             it.addAll(inputInValidList)
+        }
+        inputList.forEachIndexed { pos, _ ->
+            if (pos == inputList.size-1)return@forEachIndexed
+            inputScaleList.add(100)
         }
 
         gpioStringListEsp8266.forEachIndexed { pos, s ->

@@ -8,4 +8,6 @@
     <string name="device_time">刷新时间:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="or_scale">灵敏度</string>
+    <string name="or_channel_setting">通道设置</string>
 </resources>

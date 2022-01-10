@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/make/openrc/app/src/main/res/layout/fragment_channel_scale_setting.xml" value="0.36614583333333334" />
+        <entry key="..\:/make/openrc/app/src/main/res/layout/fragment_input.xml" value="0.3605128205128205" />
+        <entry key="..\:/make/openrc/app/src/main/res/layout/fragment_mix_setting.xml" value="0.36614583333333334" />
+        <entry key="..\:/make/openrc/app/src/main/res/layout/fragment_revicer_setting.xml" value="0.36614583333333334" />
+        <entry key="..\:/make/openrc/app/src/main/res/layout/loading_dalog_layout.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/activity_r_c_control.xml" value="0.2677083333333333" />
       </map>
     </option>

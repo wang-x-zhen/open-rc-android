@@ -12,22 +12,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.wangzhen.openrc.R
-import com.wangzhen.openrc.utils.SummerTools.runOnIo
 import com.wangzhen.openrc.adapter.*
 import com.wangzhen.openrc.data.Data
 import com.wangzhen.openrc.data.InputSetting
 import com.wangzhen.openrc.dialog.InputDialog
-import com.wangzhen.openrc.dialog.RemindDialog
 import com.wangzhen.openrc.dialog.SelectListDialog
+import com.wangzhen.openrc.utils.SummerTools
 import com.wangzhen.openrc.vm.SettingViewModel
-import kotlinx.android.synthetic.main.activity_setting.*
-import kotlinx.android.synthetic.main.fragment_input.view.*
-import kotlinx.android.synthetic.main.fragment_input.view.model_rv
-import kotlinx.android.synthetic.main.fragment_revicer_setting.view.*
+import kotlinx.android.synthetic.main.fragment_channel_scale_setting.view.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class InputSettingFragment : Fragment() {
+class ChannelScaleSettingFragment : Fragment() {
     var rvList: ArrayList<RecyclerView> = ArrayList()
     private val settingViewModel: SettingViewModel by sharedViewModel()
     lateinit var rootView: View
@@ -35,7 +31,10 @@ class InputSettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        rootView = inflater.inflate(R.layout.fragment_input, container, false)
+        rootView = inflater.inflate(R.layout.fragment_channel_scale_setting, container, false)
+        settingViewModel.modelListChange.observe(viewLifecycleOwner, {
+            initRvList()
+        })
         return rootView
     }
 
@@ -44,12 +43,12 @@ class InputSettingFragment : Fragment() {
         initRvList()
         rootView.model_rv.itemDecorationCount.takeIf { it <= 0 }?.let {
             val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-            divider.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.custom_divider)!!)
-            rootView.model_rv.addItemDecoration(divider)
-        }
-        rootView.auto_reset_rv.itemDecorationCount.takeIf { it <= 0 }?.let {
-            val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-            divider.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.custom_divider)!!)
+            divider.setDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.custom_divider
+                )!!
+            )
             rootView.model_rv.addItemDecoration(divider)
         }
         rootView.saveSetting.setOnClickListener {
@@ -69,7 +68,7 @@ class InputSettingFragment : Fragment() {
                 }
                 InputDialog(_name) {
                     inputSetting.name = it
-                    runOnIo {
+                    SummerTools.runOnIo {
                         Data.db.inputSettingDao().insertAll(inputSetting)
                         resetPos()
                         loadSettingDbData()
@@ -80,30 +79,11 @@ class InputSettingFragment : Fragment() {
                 }.show(it1, "xxx")
             }
         }
-        rootView.deleteSetting.setOnClickListener {
-            fragmentManager?.let { it1 ->
-                RemindDialog("删除这个模型配置？") {
-                    runOnIo {
-                        Data.mInputSetting?.let {
-                            Data.mInputSetting = null
-                            Data.db.inputSettingDao().deleteByName(it.name)
-                            resetPos()
-                            loadSettingDbData()
-                            settingViewModel.modelListChange.value = System.currentTimeMillis()
-                        }
-                    }
-                }.show(it1, "xxx")
-            }
-        }
     }
 
     private fun initRvList() {
         initModelList()
-        initGpiolList()
         initInput()
-        initPwmMap()
-        initDirectionMap()
-        initAutoResetList()
         linkRvList()
     }
 
@@ -120,19 +100,12 @@ class InputSettingFragment : Fragment() {
     }
 
     private fun loadSettingDbData() {
-        runOnIo {
+        SummerTools.runOnIo {
             Data.db.inputSettingDao().getAll()?.let { list ->
                 Log.e("getAll", "----" + Gson().toJson(list))
                 activity?.runOnUiThread {
                     userModelAdapter.setDataList(list)
                     userModelAdapter.notifyDataSetChanged()
-                }
-                activity?.runOnUiThread {
-                    if (!list.isNullOrEmpty()) {
-                        rootView.deleteSetting.visibility = View.VISIBLE
-                    } else {
-                        rootView.deleteSetting.visibility = View.GONE
-                    }
                 }
 
                 Data.mInputSetting?.let {
@@ -147,9 +120,6 @@ class InputSettingFragment : Fragment() {
                 return@runOnIo
             }
         }
-        activity?.runOnUiThread {
-            rootView.deleteSetting.visibility = View.GONE
-        }
     }
 
 
@@ -162,7 +132,7 @@ class InputSettingFragment : Fragment() {
 
         rootView.model_rv.adapter = userModelAdapter
         userModelAdapter.setOnClick { pos ->
-            runOnIo {
+            SummerTools.runOnIo {
                 Data.db.inputSettingDao().getAll()?.let {
                     Data.loadSetting(it[pos])
                     activity?.runOnUiThread {
@@ -174,19 +144,6 @@ class InputSettingFragment : Fragment() {
         }
         loadSettingDbData()
     }
-
-    private fun initGpiolList() {
-        var adapter = GpioAdapter()
-        rootView.gpio_rv.layoutManager = LinearLayoutManager(context).apply {
-            this.orientation = LinearLayoutManager.VERTICAL
-        }
-        rootView.gpio_rv.adapter = adapter
-        adapter.setDataList(Data.gpioList)
-        adapter.setOnClick {
-            return@setOnClick null
-        }
-    }
-
 
     private fun initInput() {
         var adapter = GpioInputAdapter()
@@ -204,54 +161,11 @@ class InputSettingFragment : Fragment() {
         }
     }
 
-    private fun initPwmMap() {
-        var adapter = GpioPwmAdapter()
-        rootView.gpio_pwm_rv.layoutManager = LinearLayoutManager(context).apply {
-            this.orientation = LinearLayoutManager.VERTICAL
-        }
-        rootView.gpio_pwm_rv.adapter = adapter
-        adapter.setOnClick {
-            val pwmPos = Data.gpio2PwmList[it]
-            SelectListDialog(Data.pwmList.map { it.name }, pwmPos) { selectPos ->
-                Data.gpio2PwmList[it] = selectPos
-                adapter.notifyDataSetChanged()
-            }
-                .show(requireActivity().supportFragmentManager, "")
-        }
-    }
-
-    private fun initDirectionMap() {
-        var adapter = GpioDirectionAdapter()
-        rootView.gpio_direction_rv.layoutManager = LinearLayoutManager(context).apply {
-            this.orientation = LinearLayoutManager.VERTICAL
-        }
-        rootView.gpio_direction_rv.adapter = adapter
-        adapter.setOnClick { pos ->
-            val directionPos = Data.gpio2DirectionList[pos]
-
-            SelectListDialog(Data.directionList.map { it.name }, directionPos) { selectPos ->
-                Data.gpio2DirectionList[pos] = selectPos
-                adapter.notifyDataSetChanged()
-            }
-                .show(requireActivity().supportFragmentManager, "")
-        }
-    }
-
-    private fun initAutoResetList() {
-        rootView.auto_reset_rv.layoutManager = LinearLayoutManager(context).apply {
-            this.orientation = LinearLayoutManager.VERTICAL
-        }
-
-        rootView.auto_reset_rv.adapter = InputAdapter()
-    }
-
 
     private fun linkRvList() {
         rvList.apply {
-            add(rootView.gpio_rv)
             add(rootView.gpio_input_rv)
-            add(rootView.gpio_pwm_rv)
-            add(rootView.gpio_direction_rv)
+            add(rootView.scale_rv)
         }
         rvList.forEachIndexed { index, recyclerView ->
             recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
