@@ -21,8 +21,12 @@
 ### 应用截图
 ![Screenshot_1637312138](Screenshot_1637312138.png)
 ![Screenshot_1637312269](Screenshot_1637312223.png)
-![Screenshot_1637312223](Screenshot_1637312269.png)
+![接收机](接收机.jpg)
 Watch the video (https://www.bilibili.com/video/BV1NZ4y1F7ZE?spm_id_from=333.999.0.0)
+
+[遥控小车](https://www.bilibili.com/video/BV1zY41187JN/)
+
+[电磁舵机控制](https://www.bilibili.com/video/BV1BF411q7JE/)
 
 
 ### 应用文件 [APK](app/release/app-release.apk)
