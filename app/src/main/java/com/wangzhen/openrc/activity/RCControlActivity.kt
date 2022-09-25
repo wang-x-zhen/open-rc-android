@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.joanzapata.iconify.fonts.*
+import com.joanzapata.iconify.fonts.SimpleLineIconsIcons
 import com.wangzhen.openrc.R
 import com.wangzhen.openrc.activity.ControlPWM.offSetCoefficient
 import com.wangzhen.openrc.activity.ControlPWM.offSetLeftH
@@ -18,17 +18,16 @@ import com.wangzhen.openrc.model.Input
 import com.wangzhen.openrc.model.RxDevice
 import com.wangzhen.openrc.setting.SettingActivity
 import com.wangzhen.openrc.utils.UdpUtils
+import com.wangzhen.openrc.view.JoystickView
+import com.wangzhen.openrc.view.OffSetView
+import com.wangzhen.openrc.view.OffSetViewV
 import kotlinx.android.synthetic.main.activity_r_c_control.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.json.JSONArray
 import org.json.JSONObject
-import com.wangzhen.openrc.view.JoystickView
-import com.wangzhen.openrc.view.OffSetView
-import com.wangzhen.openrc.view.OffSetViewV
 import kotlin.concurrent.thread
-import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
@@ -196,6 +195,10 @@ class RCControlActivity : AppCompatActivity() {
     }
 
 
+    var oldData = ""
+    var newData = ""
+    var resendCount = 0
+    var resendCountMax = 10
     fun send() {
         val port = Rx.port
         if (Data.rxDeviceList.filter { it.isSelect }.isNullOrEmpty()) {
@@ -205,9 +208,19 @@ class RCControlActivity : AppCompatActivity() {
         if (!ControlPWM.isValid) {
             return
         }
+        newData = ControlPWM.toData()
+        if (oldData == newData) {
+            if (resendCount > resendCountMax) {
+                return
+            }
+            resendCount++
+        } else {
+            resendCount = 0
+        }
+        oldData = newData
         Thread {
             Data.rxDeviceList.filter { it.isSelect }.forEach { device ->
-                UdpUtils.send(device.ip, port, ControlPWM.toData())
+                UdpUtils.send(device.ip, port, newData)
             }
         }.start()
     }
@@ -313,14 +326,12 @@ fun ControlPWM.toData(): String {
                         }
                     }
                     val jsonObject = JSONObject()
-                    jsonObject.put("gpio", cmdData.gpio)
-                    jsonObject.put("value", cmdData.value)
-                    jsonObject.put("pwmMode", cmdData.pwmMode)
+                    jsonObject.put("g", cmdData.gpio)
+                    jsonObject.put("v", cmdData.value)
+                    jsonObject.put("p", cmdData.pwmMode)
                     this.put(jsonObject)
                 }
         }
-    }.toString().also {
-        UdpUtils.log("-----ControlPWM $it----")
-    }
+    }.toString()
 
 }
