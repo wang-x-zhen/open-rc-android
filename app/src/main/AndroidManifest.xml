@@ -6,11 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
-    <uses-permission android:name="android.permission.VIBRATE" />
-
-    <uses-permission android:name="android.permission.VIBRATE" />
-
     <application
         android:name="com.wangzhen.openrc.RcApp"
         android:allowBackup="true"
@@ -24,7 +19,8 @@
             android:screenOrientation="landscape" />
         <activity
             android:name="com.wangzhen.openrc.activity.RCControlActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
