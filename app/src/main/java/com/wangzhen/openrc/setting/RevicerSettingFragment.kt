@@ -1,6 +1,7 @@
 package com.wangzhen.openrc.setting
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wangzhen.openrc.R
-import com.wangzhen.openrc.activity.WebOtaActivity
 import com.wangzhen.openrc.adapter.MyItemDivider
 import com.wangzhen.openrc.adapter.RxDeviceAdapter
 import com.wangzhen.openrc.model.RxDevice
@@ -51,9 +51,9 @@ class RevicerSettingFragment : Fragment() {
         )
         rootView.receive_device_rv.adapter = adapter
         adapter.setOnUpdateClickListener { _, ip ->
-            startActivity(Intent(activity, WebOtaActivity::class.java).apply {
-                putExtra("ip",ip)
-            })
+            val uri: Uri = Uri.parse("http://${ip}:8080/webota")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
         }
     }
 
