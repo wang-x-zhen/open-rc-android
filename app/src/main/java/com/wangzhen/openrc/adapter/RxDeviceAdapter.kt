@@ -12,13 +12,17 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class RxDeviceAdapter : RecyclerView.Adapter<RxDeviceAdapterViewHolder>() {
-    private var onClickListener: View.OnClickListener? = null
-
+    private var onUpdateClickListener: ((pos: Int, ip: String) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RxDeviceAdapterViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.rx_device_item, parent, false)
         return RxDeviceAdapterViewHolder(view)
     }
+
+    fun setOnUpdateClickListener(onUpdateClickListener: ((pos: Int, ip: String) -> Unit)?) {
+        this.onUpdateClickListener = onUpdateClickListener
+    }
+
 
     override fun onBindViewHolder(holder: RxDeviceAdapterViewHolder, position: Int) {
         val device: RxDevice = Data.rxDeviceList[position]
@@ -32,6 +36,9 @@ class RxDeviceAdapter : RecyclerView.Adapter<RxDeviceAdapterViewHolder>() {
             Data.rxDeviceList[position].isSelect = !Data.rxDeviceList[position].isSelect
             notifyDataSetChanged()
         }
+        holder.firmwareUpdate.setOnClickListener {
+            onUpdateClickListener?.invoke(position,device.ip)
+        }
         holder.itemView.isSelected = Data.rxDeviceList[position].isSelect
     }
 
@@ -43,6 +50,7 @@ class RxDeviceAdapter : RecyclerView.Adapter<RxDeviceAdapterViewHolder>() {
 
 class RxDeviceAdapterViewHolder(var deviceVew: View) : RecyclerView.ViewHolder(deviceVew) {
     var deviceName: TextView = deviceVew.findViewById(R.id.tv_device_name)
+    var firmwareUpdate: TextView = deviceVew.findViewById(R.id.firmwareUpdate)
     var deviceIp: TextView = deviceVew.findViewById(R.id.tv_device_ip)
     var deviceAdc: TextView = deviceVew.findViewById(R.id.tv_device_adc)
     var deviceTime: TextView = deviceVew.findViewById(R.id.tv_device_time)

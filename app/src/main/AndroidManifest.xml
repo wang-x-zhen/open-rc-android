@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name="com.wangzhen.openrc.RcApp"
         android:allowBackup="true"
@@ -15,12 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UdpDemo">
         <activity
+            android:name=".WebOtaActivity"
+            android:exported="false" />
+        <activity
             android:name="com.wangzhen.openrc.setting.SettingActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name="com.wangzhen.openrc.activity.RCControlActivity"
-            android:screenOrientation="landscape"
-            android:exported="true">
+            android:name=".RCControlActivity"
+            android:exported="true"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,10 +32,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.wangzhen.openrc.activity.TcpActivity"
+            android:name=".TcpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.wangzhen.openrc.activity.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait" />
     </application>
 

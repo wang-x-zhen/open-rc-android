@@ -1,5 +1,6 @@
 package com.wangzhen.openrc.setting
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wangzhen.openrc.R
+import com.wangzhen.openrc.activity.WebOtaActivity
 import com.wangzhen.openrc.adapter.MyItemDivider
 import com.wangzhen.openrc.adapter.RxDeviceAdapter
 import com.wangzhen.openrc.model.RxDevice
@@ -39,15 +41,20 @@ class RevicerSettingFragment : Fragment() {
             this.orientation = LinearLayoutManager.VERTICAL
         }
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
-            setDrawable(ContextCompat.getDrawable(context!!, R.drawable.custom_divider)!!)
+            setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.custom_divider)!!)
         }
         rootView.receive_device_rv.addItemDecoration(
             MyItemDivider(
-                context!!,
+                requireContext(),
                 LinearLayoutManager.VERTICAL
             )
         )
         rootView.receive_device_rv.adapter = adapter
+        adapter.setOnUpdateClickListener { _, ip ->
+            startActivity(Intent(activity, WebOtaActivity::class.java).apply {
+                putExtra("ip",ip)
+            })
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
