@@ -16,13 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UdpDemo">
         <activity
-            android:name=".WebOtaActivity"
+            android:name=".activity.WebOtaActivity"
             android:exported="false" />
         <activity
             android:name="com.wangzhen.openrc.setting.SettingActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".RCControlActivity"
+            android:name=".activity.RCControlActivity"
             android:exported="true"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -32,10 +32,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TcpActivity"
+            android:name=".activity.TcpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait" />
     </application>
 
