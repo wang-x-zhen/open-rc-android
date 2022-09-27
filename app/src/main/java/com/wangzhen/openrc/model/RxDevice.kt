@@ -3,6 +3,7 @@ package com.wangzhen.openrc.model
 class RxDevice {
     var name: String = ""
     var ip: String = ""
+    var version: String = ""
     var refreshTimeMs: Long = 0L
     var adc: Int = 0
     var isSelect = false
@@ -12,6 +13,6 @@ class RxDevice {
     }
 
     override fun toString(): String {
-        return "name:$name,ip:$ip,refreshTimeMs:$refreshTimeMs,adc:$adc,"
+        return "name:$name,ip:$ip,refreshTimeMs:$refreshTimeMs,adc:$adc,version:$version,"
     }
 }

@@ -27,6 +27,7 @@ class RxDeviceAdapter : RecyclerView.Adapter<RxDeviceAdapterViewHolder>() {
     override fun onBindViewHolder(holder: RxDeviceAdapterViewHolder, position: Int) {
         val device: RxDevice = Data.rxDeviceList[position]
         holder.deviceName.text = device.name
+        holder.deviceVersion.text = device.version
         holder.deviceIp.text = device.ip
         holder.deviceAdc.text = device.adc.toString()
         val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -51,6 +52,7 @@ class RxDeviceAdapter : RecyclerView.Adapter<RxDeviceAdapterViewHolder>() {
 class RxDeviceAdapterViewHolder(var deviceVew: View) : RecyclerView.ViewHolder(deviceVew) {
     var deviceName: TextView = deviceVew.findViewById(R.id.tv_device_name)
     var firmwareUpdate: TextView = deviceVew.findViewById(R.id.firmwareUpdate)
+    var deviceVersion: TextView = deviceVew.findViewById(R.id.deviceVersion)
     var deviceIp: TextView = deviceVew.findViewById(R.id.tv_device_ip)
     var deviceAdc: TextView = deviceVew.findViewById(R.id.tv_device_adc)
     var deviceTime: TextView = deviceVew.findViewById(R.id.tv_device_time)

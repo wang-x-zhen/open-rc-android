@@ -22,6 +22,7 @@
 ### 应用截图
 ![Screenshot_1637312138](Screenshot_1637312138.png)
 ![Screenshot_1637312269](Screenshot_1637312223.png)
+![Screenshot_20220926_120040](Screenshot_20220926_120040.png)
 ![接收机](接收机.jpg)
 Watch the video (https://www.bilibili.com/video/BV1NZ4y1F7ZE?spm_id_from=333.999.0.0)
 

@@ -68,6 +68,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="8sp"
             tools:text="192:168:0:1" />
@@ -83,20 +84,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="#FFEB3B"
             android:textSize="10sp"
+            android:text="@string/firmware_update_title"
             tools:text="固件版本:" />
 
         <TextView
             android:layout_weight="1"
-            android:id="@+id/tv_device_version"
+            android:id="@+id/deviceVersion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginBottom="10dp"
             android:gravity="left|center_vertical"
-            android:textColor="@color/white"
-            android:textSize="8sp"
+            android:textColor="#FFEB3B"
+            android:textSize="10sp"
             tools:text="192:168:0:1" />
         <TextView
             android:id="@+id/firmwareUpdate"
@@ -121,7 +123,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/device_time"
-            android:textColor="@color/white"
+            android:textColor="#B8B4B4"
             android:textSize="8sp" />
         <TextView
             android:id="@+id/tv_device_time"
@@ -130,7 +132,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="#4CAF50"
             android:textSize="8sp"
             tools:text="2020 10-29 10：09：02" />
     </LinearLayout>

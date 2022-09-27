@@ -235,12 +235,13 @@ class RCControlActivity : AppCompatActivity() {
                 try {
                     while (true) {
                         UdpUtils.receiveBroadcast(port) { msg, _ip ->
-                            // 从接收机接收到的格式 "EspRcRx11595761,ADC:2984"
+                            // 从接收机接收到的格式 EspRcRx9453113,ADC:4110,Version:1.0.3
                             msg.split(",")
                             RxDevice().apply {
                                 ip = _ip
                                 name = msg.split(",")[0]
                                 adc = msg.split(",")[1].split("ADC:")[1].toInt()
+                                version = msg.split(",")[2].split("Version:")[1]
                                 refreshTimeMs = System.currentTimeMillis()
                             }.also {
                                 if (Data.rxDeviceList.contains(it)) {
