@@ -12,10 +12,10 @@ object Data {
     var gpioList: ArrayList<GPIO> = ArrayList()
     var gpioStringListEsp8266: ArrayList<String> = arrayListOf(
         "GPIO 16",
-        "GPIO 15",
         "GPIO 14",
         "GPIO 12",
         "GPIO 13",
+        "GPIO 15",
         "GPIO 1",
         "GPIO 3",
         "GPIO 5",
