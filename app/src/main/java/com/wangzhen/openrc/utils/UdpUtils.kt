@@ -8,7 +8,6 @@ import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
 import java.net.UnknownHostException
-import kotlin.jvm.Throws
 
 /**
  *  @author :summerlabs
@@ -110,6 +109,45 @@ object UdpUtils {
         } catch (e: IOException) {
             e.printStackTrace()
         }
+    }
+
+    @JvmStatic
+    fun send(ip: String, port: Int, data: ByteArray) {
+//        if (System.currentTimeMillis() - oldTime < 20) {
+//            return
+//        }
+//        oldTime = System.currentTimeMillisllis()
+        try {
+            var sendData = data
+            val mSocket = DatagramSocket()
+            //发送
+            val address: InetAddress = InetAddress.getByName(ip)
+            val packet = DatagramPacket(
+                sendData,
+                sendData.size,
+                address,
+                port
+            )
+            mSocket.send(packet)
+            sendData.forEach {
+
+            }
+            Log.e("send", "sendData hex:${sendData.toHexString(true)}")
+            Log.e("send", "sendData int:${sendData.toIntString()}")
+        } catch (e: UnknownHostException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun ByteArray.toHexString(hasSpace: Boolean = true) = this.joinToString("") {
+        (it.toInt() and 0xFF).toString(16).padStart(2, '0')
+            .toUpperCase() + if (hasSpace) " " else ""
+    }
+
+    private fun ByteArray.toIntString() = this.joinToString("") {
+        (it.toInt() and 0xFF).toString(10) + " "
     }
 
     @Throws(IOException::class)

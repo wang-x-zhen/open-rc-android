@@ -21,9 +21,11 @@ open class OffSetViewV : View {
 
     private val rectPaint = Paint().apply {
         style = Paint.Style.STROKE
-        color = Color.BLACK
+        color = Color.WHITE
         strokeWidth = 4f
     }
+    private val lineColorV = Color.WHITE
+    private val lineColorH = Color.WHITE
     private var offsetChange: OffsetChange? = null
     fun setOffsetChange(offsetChange: OffsetChange) {
         this.offsetChange = offsetChange
@@ -59,7 +61,7 @@ open class OffSetViewV : View {
 
     private val vLinePaint = Paint().apply {
         style = Paint.Style.FILL
-        color = Color.BLACK
+        color = lineColorV
         strokeWidth = 2f
     }
 

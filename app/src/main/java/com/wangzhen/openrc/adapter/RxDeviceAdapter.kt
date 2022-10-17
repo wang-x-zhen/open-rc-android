@@ -13,6 +13,7 @@ import java.util.*
 
 class RxDeviceAdapter : RecyclerView.Adapter<RxDeviceAdapterViewHolder>() {
     private var onUpdateClickListener: ((pos: Int, ip: String) -> Unit)? = null
+    private var onSelectedClickListener: ((selected: Boolean, ip: String) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RxDeviceAdapterViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.rx_device_item, parent, false)
@@ -23,6 +24,9 @@ class RxDeviceAdapter : RecyclerView.Adapter<RxDeviceAdapterViewHolder>() {
         this.onUpdateClickListener = onUpdateClickListener
     }
 
+    fun setOnSelectedClickListener(onSelectedClickListener: ((selected: Boolean, ip: String) -> Unit)?) {
+        this.onSelectedClickListener = onSelectedClickListener
+    }
 
     override fun onBindViewHolder(holder: RxDeviceAdapterViewHolder, position: Int) {
         val device: RxDevice = Data.rxDeviceList[position]
@@ -35,10 +39,11 @@ class RxDeviceAdapter : RecyclerView.Adapter<RxDeviceAdapterViewHolder>() {
         holder.deviceTime.text = sd
         holder.itemView.setOnClickListener {
             Data.rxDeviceList[position].isSelect = !Data.rxDeviceList[position].isSelect
+            onSelectedClickListener?.invoke(Data.rxDeviceList[position].isSelect,Data.rxDeviceList[position].ip)
             notifyDataSetChanged()
         }
         holder.firmwareUpdate.setOnClickListener {
-            onUpdateClickListener?.invoke(position,device.ip)
+            onUpdateClickListener?.invoke(position, device.ip)
         }
         holder.itemView.isSelected = Data.rxDeviceList[position].isSelect
     }

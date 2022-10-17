@@ -10,12 +10,12 @@ object UiRes {
             add(Color.parseColor("#8BC34A"))
             add(Color.parseColor("#CDDC39"))
             add(Color.parseColor("#FFC107"))
-            add(Color.parseColor("#FF9800"))
-            add(Color.parseColor("#FF5722"))
-            add(Color.parseColor("#FF5722"))
-            add(Color.parseColor("#FF5722"))
-            add(Color.parseColor("#FF5722"))
-            add(Color.parseColor("#FF5722"))
+            add(Color.parseColor("#119800"))
+            add(Color.parseColor("#335722"))
+            add(Color.parseColor("#555722"))
+            add(Color.parseColor("#775722"))
+            add(Color.parseColor("#995722"))
+            add(Color.parseColor("#aa5722"))
         }
     }
 }

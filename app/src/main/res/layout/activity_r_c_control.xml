@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/rc_tv_color"
+    android:background="#D5D8E4"
     android:orientation="vertical"
     tools:context=".activity.RCControlActivity">
 
@@ -16,21 +16,23 @@
         android:layout_margin="10dp"
         android:layout_marginTop="8dp"
         android:text="{icon-park-outline:setting}"
-        android:textColor="#5AB0F1"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:clickable="true"
         android:id="@+id/device_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="#69ACAB"
-        android:textSize="8sp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#2196F3"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:text="电量 4300"
         app:layout_constraintBottom_toBottomOf="@+id/settingIcon"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/settingIcon" />
 
@@ -44,6 +46,29 @@
         app:layout_constraintBottom_toTopOf="@+id/offSetViewLeftHTv"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        app:layout_constraintTop_toTopOf="@+id/joystickViewLeft"
+        app:layout_constraintBottom_toBottomOf="@+id/joystickViewLeft"
+        app:layout_constraintEnd_toEndOf="@+id/joystickViewLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left V"
+        android:paddingRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="8sp"/>
+    <TextView
+        app:layout_constraintBottom_toBottomOf="@+id/joystickViewLeft"
+        app:layout_constraintStart_toStartOf="@+id/joystickViewLeft"
+        app:layout_constraintEnd_toEndOf="@+id/joystickViewLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left H"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        android:textSize="8sp"/>
+
+
+
     <com.wangzhen.openrc.view.JoystickView
         android:id="@+id/joystickViewRight"
         android:layout_width="200dp"
@@ -53,13 +78,33 @@
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/offSetViewRightHTv"
         app:layout_constraintEnd_toEndOf="parent" />
-
+    <TextView
+        android:layout_marginLeft="4dp"
+        app:layout_constraintTop_toTopOf="@+id/joystickViewRight"
+        app:layout_constraintStart_toStartOf="@+id/joystickViewRight"
+        app:layout_constraintBottom_toBottomOf="@+id/joystickViewRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Right V"
+        android:paddingRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="8sp"/>
+    <TextView
+        app:layout_constraintBottom_toBottomOf="@+id/joystickViewRight"
+        app:layout_constraintStart_toStartOf="@+id/joystickViewRight"
+        app:layout_constraintEnd_toEndOf="@+id/joystickViewRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Right H"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        android:textSize="8sp"/>
     <TextView
         android:id="@+id/offSetViewLeftHTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/teal_200"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/black"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/offSetViewLeftH"
         app:layout_constraintEnd_toEndOf="@+id/offSetViewLeftH"
@@ -69,7 +114,7 @@
     <com.wangzhen.openrc.view.OffSetView
         android:id="@+id/offSetViewLeftH"
         android:layout_width="100dp"
-        android:layout_height="30dp"
+        android:layout_height="26dp"
         android:layout_marginBottom="20dp"
         android:background="@color/rc_bg_color"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/black"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/offSetViewLeftV"
         app:layout_constraintEnd_toEndOf="@+id/offSetViewLeftV"
@@ -90,9 +135,9 @@
 
     <com.wangzhen.openrc.view.OffSetViewV
         android:id="@+id/offSetViewLeftV"
-        android:layout_width="30dp"
+        android:layout_width="26dp"
         android:layout_height="100dp"
-        android:layout_margin="20dp"
+        android:layout_margin="30dp"
         android:layout_marginBottom="52dp"
         android:background="@color/rc_bg_color"
         app:layout_constraintBottom_toBottomOf="@+id/joystickViewLeft"
@@ -104,8 +149,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/teal_200"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/black"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/offSetViewRightH"
         app:layout_constraintEnd_toEndOf="@+id/offSetViewRightH"
@@ -115,7 +160,7 @@
     <com.wangzhen.openrc.view.OffSetView
         android:id="@+id/offSetViewRightH"
         android:layout_width="100dp"
-        android:layout_height="30dp"
+        android:layout_height="26dp"
         android:layout_marginBottom="20dp"
         android:background="@color/rc_bg_color"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +172,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/black"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/offSetViewRightV"
         app:layout_constraintEnd_toEndOf="@+id/offSetViewRightV"
@@ -136,9 +181,9 @@
 
     <com.wangzhen.openrc.view.OffSetViewV
         android:id="@+id/offSetViewRightV"
-        android:layout_width="30dp"
+        android:layout_width="26dp"
         android:layout_height="100dp"
-        android:layout_margin="20dp"
+        android:layout_margin="30dp"
         android:layout_marginBottom="52dp"
         android:background="@color/rc_bg_color"
         app:layout_constraintBottom_toBottomOf="@+id/joystickViewRight"
