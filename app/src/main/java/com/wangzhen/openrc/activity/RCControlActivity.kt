@@ -22,14 +22,12 @@ import com.wangzhen.openrc.utils.UdpUtils
 import com.wangzhen.openrc.view.JoystickView
 import com.wangzhen.openrc.view.OffSetView
 import com.wangzhen.openrc.view.OffSetViewV
-import com.wangzhen.openrc.vm.TcpRepo
 import kotlinx.android.synthetic.main.activity_r_c_control.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.json.JSONArray
 import org.json.JSONObject
-import org.koin.android.ext.android.inject
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.concurrent.thread
 import kotlin.math.max
@@ -70,7 +68,8 @@ class RCControlActivity : AppCompatActivity() {
     var threadUdpListen: Thread? = null
     var udpReceiverIpListenPort: Int = 5678
     var receiverIp = ""
-    private val tcpRepo: TcpRepo by inject()
+
+    //    private val tcpRepo: TcpRepo by inject()
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
@@ -229,8 +228,7 @@ class RCControlActivity : AppCompatActivity() {
         Data.rxDeviceList.filter { it.isSelect }.forEach { device ->
             Log.e("--send json", "sendData:$newData")
             try {
-//                    UdpUtils.send(device.ip, port, ControlPWM.toByteData())
-                tcpRepo.send(ControlPWM.toByteData())
+                UdpUtils.send(device.ip, port, ControlPWM.toByteData())
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -315,7 +313,7 @@ fun ControlPWM.toData(): String {
                     cmdData.gpio = gpio.name.replace("GPIO ", "").toInt()
                     cmdData.value = v
                     cmdData.pwmMode = Data.gpio2PwmList[gpio.index]
-                    if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("IA")) {
+                    if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("A")) {
                         if (v - 90 < 0) {
                             cmdData.pwmMode = 2 // GND
                             cmdData.value = 0
@@ -326,7 +324,7 @@ fun ControlPWM.toData(): String {
                             cmdData.pwmMode = 1 // PWM 直接驱动
                             cmdData.value = (v - 90) * 2
                         }
-                    } else if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("IB")) {
+                    } else if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("B")) {
                         if (v - 90 < 0) {
                             cmdData.pwmMode = 1 // PWM 直接驱动
                             cmdData.value = -1 * (v - 90) * 2
@@ -386,7 +384,7 @@ fun ControlPWM.toByteData(): ByteArray {
                 cmdData.gpio = gpio.name.replace("GPIO ", "").toInt()
                 cmdData.value = v
                 cmdData.pwmMode = Data.gpio2PwmList[gpio.index]
-                if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("IA")) {
+                if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("A")) {
                     if (v - 90 < 0) {
                         cmdData.pwmMode = 2 // GND
                         cmdData.value = 0
@@ -397,7 +395,7 @@ fun ControlPWM.toByteData(): ByteArray {
                         cmdData.pwmMode = 1 // PWM 直接驱动
                         cmdData.value = (v - 90) * 2
                     }
-                } else if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("IB")) {
+                } else if (Data.pwmList[Data.gpio2PwmList[gpio.index]].name.contains("B")) {
                     if (v - 90 < 0) {
                         cmdData.pwmMode = 1 // PWM 直接驱动
                         cmdData.value = -1 * (v - 90) * 2
@@ -409,12 +407,12 @@ fun ControlPWM.toByteData(): ByteArray {
                         cmdData.value = 0
                     }
                 }
+                var scale = Data.inputScaleList[Data.gpio2InputList[pos]]
+
                 byteList.add(cmdData.gpio.toByte())
-                byteList.add(cmdData.value.toByte())
+                byteList.add((cmdData.value * scale / 100).toByte())
                 byteList.add(cmdData.pwmMode.toByte())
             }
     }
-    byteList.add(200.toByte())
-    byteList.add(201.toByte())
     return byteList.toByteArray()
 }

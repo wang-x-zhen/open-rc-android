@@ -3,7 +3,6 @@ package com.wangzhen.openrc.data
 import android.app.Application
 import androidx.room.Room
 import com.wangzhen.openrc.model.*
-import kotlin.collections.ArrayList
 
 object Data {
     const val DB_NAME = "database-esp-tx"
@@ -30,7 +29,7 @@ object Data {
     var gpio2PwmList: ArrayList<Int> = ArrayList()
     var gpio2DirectionList: ArrayList<Int> = ArrayList()
     var autoResetList: ArrayList<Int> = ArrayList()
-    var inputScaleList: java.util.ArrayList<Int> = java.util.ArrayList()
+    var inputScaleList: ArrayList<Int> = arrayListOf()
     init {
         inputInValidList.apply {
             add(Input().apply { name = "无" })
@@ -49,9 +48,11 @@ object Data {
         }.also {
             it.addAll(inputInValidList)
         }
-        inputList.forEachIndexed { pos, _ ->
-            if (pos == inputList.size-1)return@forEachIndexed
-            inputScaleList.add(100)
+        inputScaleList.apply {
+            add(100)
+            add(100)
+            add(100)
+            add(100)
         }
 
         gpioStringListEsp8266.forEachIndexed { pos, s ->
@@ -74,10 +75,8 @@ object Data {
         pwmList.apply {
             add(Pwm().apply { name = "PWM 舵机" })
             add(Pwm().apply { name = "PWM 马达" })
-            add(Pwm().apply { name = "IA 1" })
-            add(Pwm().apply { name = "IB 1" })
-            add(Pwm().apply { name = "IA 2" })
-            add(Pwm().apply { name = "IB 2" })
+            add(Pwm().apply { name = "双向 A" })
+            add(Pwm().apply { name = "双向 B" })
         }
         directionList.apply {
             add(Direction().apply { name = DIRECT.R.v })
@@ -103,6 +102,7 @@ object Data {
         gpio2PwmList = inputSetting.gpio2PwmList
         gpio2DirectionList = inputSetting.gpio2DirectionList
         autoResetList = inputSetting.autoResetList
+        inputScaleList = inputSetting.inputScaleList
     }
 
     lateinit var db: AppDatabase

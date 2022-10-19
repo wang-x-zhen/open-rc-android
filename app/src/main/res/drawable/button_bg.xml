@@ -2,7 +2,7 @@
     <item android:state_pressed="true">
         <shape>
             <corners android:radius="2dp"/>
-            <solid android:color="#03AA9A" />
+            <solid android:color="#009688" />
             <stroke android:width="2dp" android:color="#96BCDA"/>
         </shape>
     </item>

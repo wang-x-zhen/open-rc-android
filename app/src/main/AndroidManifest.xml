@@ -10,15 +10,12 @@
     <application
         android:name="com.wangzhen.openrc.RcApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/openrc_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/openrc_icon"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.UdpDemo">
-        <activity
-            android:name=".activity.WebOtaActivity"
-            android:exported="false" />
         <activity
             android:name="com.wangzhen.openrc.setting.SettingActivity"
             android:screenOrientation="landscape" />
