@@ -1,0 +1,24 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false">
+        <shape>
+            <stroke android:width="1dp" android:color="@color/black" />
+            <corners android:bottomLeftRadius="10dp" android:bottomRightRadius="10dp" />
+            <solid android:color="@color/radio_nomal" />
+        </shape>
+    </item>
+
+    <item android:state_pressed="true">
+        <shape>
+            <stroke android:width="1dp" android:color="@color/black" />
+            <corners android:bottomLeftRadius="10dp" android:bottomRightRadius="10dp" />
+            <solid android:color="@color/radio_pressed" />
+        </shape>
+    </item>
+    <item android:state_checked="true">
+        <shape>
+            <stroke android:width="2dp" android:color="#000000" />
+            <corners android:bottomLeftRadius="10dp" android:bottomRightRadius="10dp" />
+            <solid android:color="@color/radio_selected" />
+        </shape>
+    </item>
+</selector>

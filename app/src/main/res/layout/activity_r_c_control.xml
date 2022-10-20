@@ -8,33 +8,245 @@
     android:orientation="vertical"
     tools:context=".activity.RCControlActivity">
 
+    <RadioGroup
+        android:layout_marginStart="20dp"
+        android:id="@+id/sw1"
+        android:layout_width="36dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:checkedButton="@id/sw1_b1"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/top_button_bg"
+            android:gravity="center" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/middle_button_bg"/>
+
+        <RadioButton
+            android:id="@+id/sw1_b1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/bottom_button_bg" />
+    </RadioGroup>
+    <RadioGroup
+        android:layout_marginStart="180dp"
+        android:id="@+id/sw2"
+        android:layout_width="36dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:checkedButton="@id/sw2_b1"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/sw1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/top_button_bg"
+            android:gravity="center" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/middle_button_bg"/>
+
+        <RadioButton
+            android:id="@+id/sw2_b1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/bottom_button_bg" />
+    </RadioGroup>
+    <RadioGroup
+        android:layout_marginStart="20dp"
+        android:id="@+id/sw3"
+        android:layout_width="36dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:checkedButton="@id/sw3_b1"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/sw2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/top_button_bg"
+            android:gravity="center" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/middle_button_bg"/>
+
+        <RadioButton
+            android:id="@+id/sw3_b1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/bottom_button_bg" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_marginEnd="20dp"
+        android:id="@+id/sw4"
+        android:layout_width="36dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:checkedButton="@id/sw4_b1"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/sw5"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/top_button_bg"
+            android:gravity="center" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/middle_button_bg"/>
+
+        <RadioButton
+            android:id="@+id/sw4_b1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/bottom_button_bg" />
+    </RadioGroup>
+    <RadioGroup
+        android:layout_marginEnd="180dp"
+        android:id="@+id/sw5"
+        android:layout_width="36dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:checkedButton="@id/sw5_b1"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/sw6"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/top_button_bg"
+            android:gravity="center" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/middle_button_bg"/>
+
+        <RadioButton
+            android:id="@+id/sw5_b1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/bottom_button_bg" />
+    </RadioGroup>
+    <RadioGroup
+        android:layout_marginEnd="20dp"
+        android:id="@+id/sw6"
+        android:layout_width="36dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:checkedButton="@id/sw6_b1"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/top_button_bg"
+            android:gravity="center" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/middle_button_bg"/>
+
+        <RadioButton
+            android:id="@+id/sw6_b1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:background="@drawable/bottom_button_bg" />
+    </RadioGroup>
 
     <com.joanzapata.iconify.widget.IconTextView
         android:id="@+id/settingIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="8dp"
         android:text="{icon-park-outline:setting}"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
-        android:clickable="true"
         android:id="@+id/device_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:clickable="true"
         android:textColor="#2196F3"
         android:textSize="12sp"
         android:textStyle="bold"
-        tools:text="电量 4300"
         app:layout_constraintBottom_toBottomOf="@+id/settingIcon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/settingIcon" />
+        app:layout_constraintTop_toTopOf="@+id/settingIcon"
+        tools:text="电量 4300" />
 
     <com.wangzhen.openrc.view.JoystickView
         android:id="@+id/joystickViewLeft"
@@ -47,26 +259,26 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        app:layout_constraintTop_toTopOf="@+id/joystickViewLeft"
-        app:layout_constraintBottom_toBottomOf="@+id/joystickViewLeft"
-        app:layout_constraintEnd_toEndOf="@+id/joystickViewLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Left V"
         android:paddingRight="10dp"
+        android:text="Left V"
         android:textColor="@color/white"
-        android:textSize="8sp"/>
-    <TextView
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="@+id/joystickViewLeft"
-        app:layout_constraintStart_toStartOf="@+id/joystickViewLeft"
         app:layout_constraintEnd_toEndOf="@+id/joystickViewLeft"
+        app:layout_constraintTop_toTopOf="@+id/joystickViewLeft" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Left H"
         android:layout_marginBottom="10dp"
+        android:text="Left H"
         android:textColor="@color/white"
-        android:textSize="8sp"/>
-
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/joystickViewLeft"
+        app:layout_constraintEnd_toEndOf="@+id/joystickViewLeft"
+        app:layout_constraintStart_toStartOf="@+id/joystickViewLeft" />
 
 
     <com.wangzhen.openrc.view.JoystickView
@@ -78,27 +290,30 @@
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/offSetViewRightHTv"
         app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
-        app:layout_constraintTop_toTopOf="@+id/joystickViewRight"
-        app:layout_constraintStart_toStartOf="@+id/joystickViewRight"
-        app:layout_constraintBottom_toBottomOf="@+id/joystickViewRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Right V"
         android:paddingRight="10dp"
+        android:text="Right V"
         android:textColor="@color/white"
-        android:textSize="8sp"/>
-    <TextView
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="@+id/joystickViewRight"
         app:layout_constraintStart_toStartOf="@+id/joystickViewRight"
-        app:layout_constraintEnd_toEndOf="@+id/joystickViewRight"
+        app:layout_constraintTop_toTopOf="@+id/joystickViewRight" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Right H"
         android:layout_marginBottom="10dp"
+        android:text="Right H"
         android:textColor="@color/white"
-        android:textSize="8sp"/>
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/joystickViewRight"
+        app:layout_constraintEnd_toEndOf="@+id/joystickViewRight"
+        app:layout_constraintStart_toStartOf="@+id/joystickViewRight" />
+
     <TextView
         android:id="@+id/offSetViewLeftHTv"
         android:layout_width="wrap_content"

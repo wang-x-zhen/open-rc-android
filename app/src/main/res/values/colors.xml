@@ -17,4 +17,7 @@
         <item>#FF9800</item>
         <item>#FF5722</item>
     </string-array>
+    <color name="radio_nomal">#6C777C</color>
+    <color name="radio_pressed">#3F90BF</color>
+    <color name="radio_selected">#06476C</color>
 </resources>
