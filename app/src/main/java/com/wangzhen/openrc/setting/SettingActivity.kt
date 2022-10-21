@@ -5,10 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.wangzhen.openrc.R
 import com.wangzhen.openrc.databinding.ActivitySettingBinding
-import com.wangzhen.openrc.vm.SettingViewModel
-import com.wangzhen.openrc.vm.TcpViewModel
-import org.koin.android.compat.SharedViewModelCompat.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SettingActivity : AppCompatActivity() {

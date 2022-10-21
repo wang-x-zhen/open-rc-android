@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.wangzhen.openrc.model.*
 
+const val NULL_STR = "无"
+
 object Data {
     const val DB_NAME = "database-esp-tx"
     var mInputSetting: InputSetting? = null
@@ -21,6 +23,59 @@ object Data {
         "GPIO 4",
         "GPIO 2",
     )
+    val switchStringList: ArrayList<String> = arrayListOf(
+        "SW1",
+        "SW2",
+        "SW3",
+        "SW4",
+        "SW5",
+        "SW6",
+    )
+    var switchWithGpioList: ArrayList<Int> = arrayListOf()
+    var switchOffOnList: ArrayList<String> = arrayListOf(
+        "关",
+        "开"
+    )
+    var switchShowList: ArrayList<Int> = arrayListOf(
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+    )
+    var switchActiveList: ArrayList<Int> = arrayListOf(
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+    )
+    var switch1ValueList: ArrayList<Int> = arrayListOf(
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+    )
+    var switch2ValueList: ArrayList<Int> = arrayListOf(
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+    )
+    var switch3ValueList: ArrayList<Int> = arrayListOf(
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+    )
     var inputList: ArrayList<Input> = arrayListOf()
     var inputInValidList: ArrayList<Input> = arrayListOf()
     var pwmList: ArrayList<Pwm> = ArrayList()
@@ -30,9 +85,10 @@ object Data {
     var gpio2DirectionList: ArrayList<Int> = ArrayList()
     var autoResetList: ArrayList<Int> = ArrayList()
     var inputScaleList: ArrayList<Int> = arrayListOf()
+
     init {
         inputInValidList.apply {
-            add(Input().apply { name = "无" })
+            add(Input().apply { name = NULL_STR })
         }
         autoResetList.apply {
             add(0)
@@ -93,7 +149,9 @@ object Data {
         gpioList.forEachIndexed { _, _ ->
             gpio2DirectionList.add(0)
         }
-
+        switchStringList.forEachIndexed { _, _ ->
+            switchWithGpioList.add(-1)
+        }
     }
 
     fun loadSetting(inputSetting: InputSetting) {
@@ -103,6 +161,12 @@ object Data {
         gpio2DirectionList = inputSetting.gpio2DirectionList
         autoResetList = inputSetting.autoResetList
         inputScaleList = inputSetting.inputScaleList
+        switchWithGpioList = inputSetting.switchWithGpioList
+        switchShowList = inputSetting.switchShowList
+        switchActiveList = inputSetting.switchActiveList
+        switch1ValueList = inputSetting.switch1ValueList
+        switch2ValueList = inputSetting.switch2ValueList
+        switch3ValueList = inputSetting.switch3ValueList
     }
 
     lateinit var db: AppDatabase

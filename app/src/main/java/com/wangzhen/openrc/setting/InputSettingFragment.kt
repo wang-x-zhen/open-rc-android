@@ -75,6 +75,12 @@ class InputSettingFragment : Fragment() {
                     gpio2DirectionList = Data.gpio2DirectionList
                     autoResetList = Data.autoResetList
                     inputScaleList = Data.inputScaleList
+                    switchWithGpioList = Data.switchShowList
+                    switchShowList = Data.switchShowList
+                    switchActiveList = Data.switchActiveList
+                    switch1ValueList = Data.switch1ValueList
+                    switch2ValueList = Data.switch2ValueList
+                    switch3ValueList = Data.switch3ValueList
                 }
                 InputDialog(_name) {
                     inputSetting.name = it
@@ -225,8 +231,7 @@ class InputSettingFragment : Fragment() {
             SelectListDialog(Data.pwmList.map { it.name }, pwmPos) { selectPos ->
                 Data.gpio2PwmList[it] = selectPos
                 adapter.notifyDataSetChanged()
-            }
-                .show(requireActivity().supportFragmentManager, "")
+            }.show(requireActivity().supportFragmentManager, "")
         }
     }
 

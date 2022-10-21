@@ -65,6 +65,12 @@ class ChannelScaleSettingFragment : Fragment() {
                     gpio2PwmList = Data.gpio2PwmList
                     gpio2DirectionList = Data.gpio2DirectionList
                     autoResetList = Data.autoResetList
+                    switchWithGpioList = Data.switchWithGpioList
+                    switchActiveList = Data.switchActiveList
+                    switchShowList = Data.switchShowList
+                    switch1ValueList = Data.switch1ValueList
+                    switch2ValueList = Data.switch2ValueList
+                    switch3ValueList = Data.switch3ValueList
                 }
                 InputDialog(_name) {
                     inputSetting.name = it

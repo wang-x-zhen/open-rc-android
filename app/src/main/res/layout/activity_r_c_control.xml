@@ -9,48 +9,59 @@
     tools:context=".activity.RCControlActivity">
 
     <RadioGroup
-        android:layout_marginStart="20dp"
         android:id="@+id/sw1"
         android:layout_width="36dp"
         android:layout_height="100dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
         android:checkedButton="@id/sw1_b1"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
+            android:id="@+id/sw1_b3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
             android:background="@drawable/top_button_bg"
-            android:gravity="center" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
+            android:id="@+id/sw1_b2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="@drawable/middle_button_bg"
             android:button="@null"
-            android:background="@drawable/middle_button_bg"/>
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:id="@+id/sw1_b1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="@drawable/bottom_button_bg"
             android:button="@null"
-            android:background="@drawable/bottom_button_bg" />
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/sw_text_color" />
     </RadioGroup>
+
     <RadioGroup
-        android:layout_marginStart="180dp"
         android:id="@+id/sw2"
         android:layout_width="36dp"
         android:layout_height="100dp"
+        android:layout_marginStart="180dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
         android:checkedButton="@id/sw2_b1"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/sw1"
         app:layout_constraintTop_toTopOf="parent">
@@ -59,33 +70,34 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
             android:background="@drawable/top_button_bg"
+            android:button="@null"
             android:gravity="center" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/middle_button_bg"/>
+            android:background="@drawable/middle_button_bg"
+            android:button="@null" />
 
         <RadioButton
             android:id="@+id/sw2_b1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/bottom_button_bg" />
+            android:background="@drawable/bottom_button_bg"
+            android:button="@null" />
     </RadioGroup>
+
     <RadioGroup
-        android:layout_marginStart="20dp"
         android:id="@+id/sw3"
         android:layout_width="36dp"
         android:layout_height="100dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
         android:checkedButton="@id/sw3_b1"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/sw2"
         app:layout_constraintTop_toTopOf="parent">
@@ -94,34 +106,34 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
             android:background="@drawable/top_button_bg"
+            android:button="@null"
             android:gravity="center" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/middle_button_bg"/>
+            android:background="@drawable/middle_button_bg"
+            android:button="@null" />
 
         <RadioButton
             android:id="@+id/sw3_b1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/bottom_button_bg" />
+            android:background="@drawable/bottom_button_bg"
+            android:button="@null" />
     </RadioGroup>
 
     <RadioGroup
-        android:layout_marginEnd="20dp"
         android:id="@+id/sw4"
         android:layout_width="36dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
+        android:layout_marginEnd="20dp"
         android:checkedButton="@id/sw4_b1"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/sw5"
         app:layout_constraintTop_toTopOf="parent">
@@ -130,33 +142,34 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
             android:background="@drawable/top_button_bg"
+            android:button="@null"
             android:gravity="center" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/middle_button_bg"/>
+            android:background="@drawable/middle_button_bg"
+            android:button="@null" />
 
         <RadioButton
             android:id="@+id/sw4_b1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/bottom_button_bg" />
+            android:background="@drawable/bottom_button_bg"
+            android:button="@null" />
     </RadioGroup>
+
     <RadioGroup
-        android:layout_marginEnd="180dp"
         android:id="@+id/sw5"
         android:layout_width="36dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
+        android:layout_marginEnd="180dp"
         android:checkedButton="@id/sw5_b1"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/sw6"
         app:layout_constraintTop_toTopOf="parent">
@@ -165,33 +178,34 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
             android:background="@drawable/top_button_bg"
+            android:button="@null"
             android:gravity="center" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/middle_button_bg"/>
+            android:background="@drawable/middle_button_bg"
+            android:button="@null" />
 
         <RadioButton
             android:id="@+id/sw5_b1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/bottom_button_bg" />
+            android:background="@drawable/bottom_button_bg"
+            android:button="@null" />
     </RadioGroup>
+
     <RadioGroup
-        android:layout_marginEnd="20dp"
         android:id="@+id/sw6"
         android:layout_width="36dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
+        android:layout_marginEnd="20dp"
         android:checkedButton="@id/sw6_b1"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -200,25 +214,85 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
             android:background="@drawable/top_button_bg"
+            android:button="@null"
             android:gravity="center" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/middle_button_bg"/>
+            android:background="@drawable/middle_button_bg"
+            android:button="@null" />
 
         <RadioButton
             android:id="@+id/sw6_b1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:button="@null"
-            android:background="@drawable/bottom_button_bg" />
+            android:background="@drawable/bottom_button_bg"
+            android:button="@null" />
     </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="SW1"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/sw1"
+        app:layout_constraintStart_toStartOf="@+id/sw1"
+        app:layout_constraintTop_toBottomOf="@+id/sw1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="SW2"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/sw2"
+        app:layout_constraintStart_toStartOf="@+id/sw2"
+        app:layout_constraintTop_toBottomOf="@+id/sw2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="SW3"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/sw3"
+        app:layout_constraintStart_toStartOf="@+id/sw3"
+        app:layout_constraintTop_toBottomOf="@+id/sw3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="SW4"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/sw4"
+        app:layout_constraintStart_toStartOf="@+id/sw4"
+        app:layout_constraintTop_toBottomOf="@+id/sw4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="SW5"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/sw5"
+        app:layout_constraintStart_toStartOf="@+id/sw5"
+        app:layout_constraintTop_toBottomOf="@+id/sw5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="SW6"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/sw6"
+        app:layout_constraintStart_toStartOf="@+id/sw6"
+        app:layout_constraintTop_toBottomOf="@+id/sw6" />
 
     <com.joanzapata.iconify.widget.IconTextView
         android:id="@+id/settingIcon"
@@ -230,8 +304,8 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/device_tv"

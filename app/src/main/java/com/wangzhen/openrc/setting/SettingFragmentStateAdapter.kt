@@ -15,7 +15,7 @@ class SettingFragmentStateAdapter(fragmentActivity: FragmentActivity) :
         return when (position) {
             0 -> RevicerSettingFragment()
             1 -> InputSettingFragment()
-            else -> MixSettingFragment()
+            else -> SwitchSettingFragment()
         }
     }
 }

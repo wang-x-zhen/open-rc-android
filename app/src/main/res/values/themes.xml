@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/rc_tv_color</item>
         <item name="colorPrimaryVariant">@color/rc_tv_color</item>
-        <item name="colorOnPrimary">#E91E63</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#8BC34A</item>
         <item name="colorSecondaryVariant">#FF5722</item>
