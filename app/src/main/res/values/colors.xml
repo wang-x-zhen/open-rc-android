@@ -10,12 +10,12 @@
     <color name="rc_bg_color">#F4082C53</color>
     <color name="rc_tv_color">#F40E4D91</color>
     <string-array  name="color_values">
-        <item>#4CAF50</item>
-        <item>#8BC34A</item>
-        <item>#CDDC39</item>
-        <item>#FFC107</item>
-        <item>#FF9800</item>
-        <item>#FF5722</item>
+        <item>#1C1F50</item>
+        <item>#1C2F50</item>
+        <item>#1C3F50</item>
+        <item>#1C4F50</item>
+        <item>#1C5F50</item>
+        <item>#1C6F50</item>
     </string-array>
     <color name="radio_nomal">#6C777C</color>
     <color name="radio_pressed">#3F90BF</color>

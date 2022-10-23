@@ -3,12 +3,12 @@ package com.wangzhen.openrc
 import android.app.Application
 import com.joanzapata.iconify.Iconify
 import com.joanzapata.iconify.fonts.*
-import com.wangzhen.openrc.utils.SummerTools.runOnIo
 import com.wangzhen.openrc.data.Data
+import com.wangzhen.openrc.data.model.InputSettingInner
 import com.wangzhen.openrc.di.appModule
+import com.wangzhen.openrc.utils.SummerTools.runOnIo
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
-import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
 
 
@@ -32,6 +32,9 @@ class RcApp : Application() {
 
         runOnIo {
             Data.dbInit(this)
+            Data.db.inputSettingDao().getAll()?.takeIf { it.isNullOrEmpty() }?.let {
+                Data.db.inputSettingDao().insertAll(InputSettingInner.OpenRcMini)
+            }
             Data.db.inputSettingDao().getAll()?.takeIf { !it.isNullOrEmpty() }?.let {
                 Data.loadSetting(it[0])
             }

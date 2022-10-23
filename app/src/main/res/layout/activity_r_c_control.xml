@@ -72,14 +72,19 @@
             android:layout_weight="1"
             android:background="@drawable/top_button_bg"
             android:button="@null"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/middle_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:id="@+id/sw2_b1"
@@ -87,7 +92,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/bottom_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/sw_text_color" />
     </RadioGroup>
 
     <RadioGroup
@@ -108,14 +116,19 @@
             android:layout_weight="1"
             android:background="@drawable/top_button_bg"
             android:button="@null"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/middle_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:id="@+id/sw3_b1"
@@ -123,7 +136,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/bottom_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/sw_text_color" />
     </RadioGroup>
 
     <RadioGroup
@@ -144,14 +160,19 @@
             android:layout_weight="1"
             android:background="@drawable/top_button_bg"
             android:button="@null"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/middle_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:id="@+id/sw4_b1"
@@ -159,7 +180,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/bottom_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/sw_text_color" />
     </RadioGroup>
 
     <RadioGroup
@@ -180,14 +204,19 @@
             android:layout_weight="1"
             android:background="@drawable/top_button_bg"
             android:button="@null"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/middle_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:id="@+id/sw5_b1"
@@ -195,7 +224,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/bottom_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/sw_text_color" />
     </RadioGroup>
 
     <RadioGroup
@@ -216,14 +248,19 @@
             android:layout_weight="1"
             android:background="@drawable/top_button_bg"
             android:button="@null"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/middle_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/sw_text_color" />
 
         <RadioButton
             android:id="@+id/sw6_b1"
@@ -231,10 +268,14 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/bottom_button_bg"
-            android:button="@null" />
+            android:button="@null"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/sw_text_color" />
     </RadioGroup>
 
     <TextView
+        android:id="@+id/sw1_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -245,6 +286,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sw1" />
 
     <TextView
+        android:id="@+id/sw2_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -255,6 +297,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sw2" />
 
     <TextView
+        android:id="@+id/sw3_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -265,6 +308,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sw3" />
 
     <TextView
+        android:id="@+id/sw4_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -275,6 +319,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sw4" />
 
     <TextView
+        android:id="@+id/sw5_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -285,6 +330,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sw5" />
 
     <TextView
+        android:id="@+id/sw6_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"

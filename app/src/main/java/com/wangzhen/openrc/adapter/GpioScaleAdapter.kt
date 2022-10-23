@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.wangzhen.openrc.R
 import com.wangzhen.openrc.data.Data
-import com.wangzhen.openrc.format2f
+import com.wangzhen.openrc.dialog.format2f
 import com.wangzhen.openrc.view.UiRes
 
 class GpioScaleAdapter : RecyclerView.Adapter<GpioScaleAdapterViewHolder>() {

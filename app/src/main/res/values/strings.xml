@@ -2,6 +2,7 @@
     <string name="app_name">OpenRC</string>
     <string name="recv_title">接收器</string>
     <string name="setting_save">保存</string>
+    <string name="create_new">+ 新建</string>
     <string name="firmware_update_title">固件版本:</string>
     <string name="firmware_update">升级固件</string>
     <string name="setting_delete">删除</string>

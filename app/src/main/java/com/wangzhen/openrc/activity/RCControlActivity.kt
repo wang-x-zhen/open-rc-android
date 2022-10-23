@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.joanzapata.iconify.fonts.SimpleLineIconsIcons
 import com.wangzhen.openrc.R
@@ -162,6 +163,7 @@ class RCControlActivity : AppCompatActivity() {
             startActivity(Intent(this, SettingActivity::class.java))
         }
         sendThread()
+
     }
 
     private fun sendThread() {
@@ -184,6 +186,36 @@ class RCControlActivity : AppCompatActivity() {
         super.onResume()
         updateDevice()
         setAutoReset()
+        updateSw()
+    }
+
+    var swList = arrayListOf<View>()
+    var swTvList = arrayListOf<View>()
+    private fun updateSw() {
+        if (swList.isEmpty()) {
+            swList.add(sw1)
+            swList.add(sw2)
+            swList.add(sw3)
+            swList.add(sw4)
+            swList.add(sw5)
+            swList.add(sw6)
+        }
+        if (swTvList.isEmpty()) {
+            swTvList.add(sw1_tv)
+            swTvList.add(sw2_tv)
+            swTvList.add(sw3_tv)
+            swTvList.add(sw4_tv)
+            swTvList.add(sw5_tv)
+            swTvList.add(sw6_tv)
+        }
+        Data.switchShowList.forEachIndexed { index, i ->
+            swList[index].visibility = if (i == 1) {
+                View.VISIBLE
+            } else {
+                View.INVISIBLE
+            }
+            swTvList[index].visibility =  swList[index].visibility
+        }
     }
 
     private fun updateDevice() {

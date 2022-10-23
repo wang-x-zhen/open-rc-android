@@ -1,6 +1,8 @@
 package com.wangzhen.openrc.dialog
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.*
 import androidx.annotation.Nullable
 import androidx.fragment.app.DialogFragment
@@ -34,8 +36,11 @@ class SelectListDialog(
         layout.rv.adapter = selectAdapter
         selectAdapter.setDataList(dataList = datas, pos)
         selectAdapter.setOnClick {
-            onSelect(it)
-            dismiss()
+            Handler(Looper.getMainLooper()).postDelayed({
+                dismiss()
+                onSelect(it)
+            }, 100)
+            Unit
         }
         return layout
     }

@@ -33,20 +33,6 @@
                 android:layout_weight="1"
                 android:text="通道设置"
                 android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/saveSetting"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/button_bg"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:text="@string/setting_save"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-
             <TextView
                 android:id="@+id/deleteSetting"
                 android:layout_width="40dp"
@@ -72,9 +58,10 @@
             android:padding="10dp">
 
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="1dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -87,17 +74,31 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/model_rv"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/createNewModel"
+                    android:layout_margin="4dp"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_bg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="@string/create_new"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
             </LinearLayout>
 
 
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="1dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -110,15 +111,15 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/gpio_rv"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="4dp" />
+                    android:layout_height="match_parent" />
             </LinearLayout>
 
 
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="1dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -132,13 +133,14 @@
                     android:id="@+id/gpio_input_rv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="2dp" />
+                    android:layout_marginStart="1dp" />
             </LinearLayout>
 
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="1dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -152,13 +154,14 @@
                     android:id="@+id/gpio_pwm_rv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="2dp" />
+                    android:layout_marginStart="1dp" />
             </LinearLayout>
 
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="1dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -172,13 +175,14 @@
                     android:id="@+id/gpio_direction_rv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="2dp" />
+                    android:layout_marginStart="1dp" />
             </LinearLayout>
 
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -194,9 +198,10 @@
                     android:layout_height="match_parent" />
             </LinearLayout>
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="1dp"
                 android:orientation="vertical">
 
                 <TextView

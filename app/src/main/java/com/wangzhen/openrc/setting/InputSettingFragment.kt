@@ -12,13 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.wangzhen.openrc.R
-import com.wangzhen.openrc.ScaleDialog
 import com.wangzhen.openrc.adapter.*
 import com.wangzhen.openrc.data.Data
 import com.wangzhen.openrc.data.InputSetting
+import com.wangzhen.openrc.data.model.InputSettingInner
 import com.wangzhen.openrc.dialog.InputDialog
 import com.wangzhen.openrc.dialog.RemindDialog
+import com.wangzhen.openrc.dialog.ScaleDialog
 import com.wangzhen.openrc.dialog.SelectListDialog
+import com.wangzhen.openrc.utils.SummerTools
 import com.wangzhen.openrc.utils.SummerTools.runOnIo
 import com.wangzhen.openrc.vm.SettingViewModel
 import kotlinx.android.synthetic.main.fragment_input.view.*
@@ -60,41 +62,6 @@ class InputSettingFragment : Fragment() {
             )
             rootView.model_rv.addItemDecoration(divider)
         }
-        rootView.saveSetting.setOnClickListener {
-            var _name = ""
-            Data.mInputSetting?.let {
-                _name = it.name
-            }
-
-            fragmentManager?.let { it1 ->
-                val inputSetting = InputSetting().apply {
-                    name = _name
-                    time = System.currentTimeMillis()
-                    gpio2InputList = Data.gpio2InputList
-                    gpio2PwmList = Data.gpio2PwmList
-                    gpio2DirectionList = Data.gpio2DirectionList
-                    autoResetList = Data.autoResetList
-                    inputScaleList = Data.inputScaleList
-                    switchWithGpioList = Data.switchShowList
-                    switchShowList = Data.switchShowList
-                    switchActiveList = Data.switchActiveList
-                    switch1ValueList = Data.switch1ValueList
-                    switch2ValueList = Data.switch2ValueList
-                    switch3ValueList = Data.switch3ValueList
-                }
-                InputDialog(_name) {
-                    inputSetting.name = it
-                    runOnIo {
-                        Data.db.inputSettingDao().insertAll(inputSetting)
-                        resetPos()
-                        loadSettingDbData()
-                        activity?.runOnUiThread {
-                            settingViewModel.modelListChange.value = System.currentTimeMillis()
-                        }
-                    }
-                }.show(it1, "xxx")
-            }
-        }
         rootView.deleteSetting.setOnClickListener {
             fragmentManager?.let { it1 ->
                 RemindDialog("删除这个模型配置？") {
@@ -104,7 +71,6 @@ class InputSettingFragment : Fragment() {
                             Data.db.inputSettingDao().deleteByName(it.name)
                             resetPos()
                             loadSettingDbData()
-                            settingViewModel.modelListChange.value = System.currentTimeMillis()
                         }
                     }
                 }.show(it1, "xxx")
@@ -144,7 +110,7 @@ class InputSettingFragment : Fragment() {
                     userModelAdapter.notifyDataSetChanged()
                 }
                 activity?.runOnUiThread {
-                    if (!list.isNullOrEmpty()) {
+                    if (!list.isNullOrEmpty() && !Data.mInputSetting?.name.equals(InputSettingInner.OpenRcMini.name)) {
                         rootView.deleteSetting.visibility = View.VISIBLE
                     } else {
                         rootView.deleteSetting.visibility = View.GONE
@@ -168,19 +134,48 @@ class InputSettingFragment : Fragment() {
         }
     }
 
-
-    var userModelAdapter = UserModelAdapter()
+    private var userModelAdapter = UserModelAdapter()
     private fun initModelList() {
         rootView.model_rv.layoutManager = LinearLayoutManager(context).apply {
             this.orientation = LinearLayoutManager.VERTICAL
         }
-
-
         rootView.model_rv.adapter = userModelAdapter
+        rootView.createNewModel.setOnClickListener {
+            var modelName = ""
+            Data.mInputSetting?.let {
+                modelName = it.name
+            }
+            fragmentManager?.let { it1 ->
+                val inputSetting = InputSetting().apply {
+                    name = modelName
+                    time = System.currentTimeMillis()
+                    gpio2InputList = Data.gpio2InputList
+                    gpio2PwmList = Data.gpio2PwmList
+                    gpio2DirectionList = Data.gpio2DirectionList
+                    autoResetList = Data.autoResetList
+                    inputScaleList = Data.inputScaleList
+                    switchWithGpioList = Data.switchShowList
+                    switchShowList = Data.switchShowList
+                    switchActiveList = Data.switchActiveList
+                    switch1ValueList = Data.switch1ValueList
+                    switch2ValueList = Data.switch2ValueList
+                    switch3ValueList = Data.switch3ValueList
+                }
+                InputDialog(modelName) {
+                    inputSetting.name = it
+                    runOnIo {
+                        Data.db.inputSettingDao().insertAll(inputSetting)
+                        resetPos()
+                        loadSettingDbData()
+                    }
+                }.show(it1, "xxx")
+            }
+        }
         userModelAdapter.setOnClick { pos ->
             runOnIo {
                 Data.db.inputSettingDao().getAll()?.let {
                     Data.loadSetting(it[pos])
+                    settingViewModel.modelListChange.postValue(System.currentTimeMillis())
                     activity?.runOnUiThread {
                         initRvList()
                         userModelAdapter.setPos(pos)
@@ -214,6 +209,7 @@ class InputSettingFragment : Fragment() {
             val pinPos = Data.gpio2InputList[it]!!
             SelectListDialog(Data.inputList.map { it.name }, pinPos) { selectPos ->
                 Data.gpio2InputList[it] = selectPos
+                settingViewModel.saveModel()
                 adapter.notifyDataSetChanged()
             }
                 .show(requireActivity().supportFragmentManager, "")
@@ -230,6 +226,7 @@ class InputSettingFragment : Fragment() {
             val pwmPos = Data.gpio2PwmList[it]
             SelectListDialog(Data.pwmList.map { it.name }, pwmPos) { selectPos ->
                 Data.gpio2PwmList[it] = selectPos
+                settingViewModel.saveModel()
                 adapter.notifyDataSetChanged()
             }.show(requireActivity().supportFragmentManager, "")
         }
@@ -246,6 +243,7 @@ class InputSettingFragment : Fragment() {
 
             SelectListDialog(Data.directionList.map { it.name }, directionPos) { selectPos ->
                 Data.gpio2DirectionList[pos] = selectPos
+                settingViewModel.saveModel()
                 adapter.notifyDataSetChanged()
             }
                 .show(requireActivity().supportFragmentManager, "")
@@ -256,8 +254,16 @@ class InputSettingFragment : Fragment() {
         rootView.auto_reset_rv.layoutManager = LinearLayoutManager(context).apply {
             this.orientation = LinearLayoutManager.VERTICAL
         }
-
-        rootView.auto_reset_rv.adapter = InputAdapter()
+        rootView.auto_reset_rv.adapter = InputAdapter().apply {
+            setCheckListener { position, isChecked ->
+                Data.autoResetList[position] = if (isChecked) {
+                    1
+                } else {
+                    0
+                }
+                settingViewModel.saveModel()
+            }
+        }
     }
 
     private fun initScaleList() {
@@ -268,6 +274,7 @@ class InputSettingFragment : Fragment() {
             setOnClick { pos ->
                 ScaleDialog(value = Data.inputScaleList[pos] / 100F) { value ->
                     Data.inputScaleList[pos] = (value * 100).toInt()
+                    settingViewModel.saveModel()
                     this.notifyDataSetChanged()
                 }.show(requireActivity().supportFragmentManager, "")
             }

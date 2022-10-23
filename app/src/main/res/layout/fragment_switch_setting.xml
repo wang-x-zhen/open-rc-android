@@ -33,35 +33,7 @@
                 android:layout_weight="1"
                 android:text="辅助开关设置"
                 android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/saveSetting"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/button_bg"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:text="@string/setting_save"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-
-            <TextView
-                android:id="@+id/deleteSetting"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/button_red_bg"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:text="@string/setting_delete"
-                android:textColor="@color/white"
-                android:textSize="10sp"
-                android:visibility="gone" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -75,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
@@ -98,6 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
@@ -119,6 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
@@ -139,6 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
@@ -158,6 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
@@ -177,6 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
@@ -196,6 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
@@ -215,6 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView

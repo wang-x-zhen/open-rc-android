@@ -232,6 +232,17 @@ public class CenterSeekBar extends View {
         return this;
     }
 
+    public CenterSeekBar setMin(int min) {
+        minProgress = min;
+        invalidate();
+        return this;
+    }
+    public CenterSeekBar setMax(int max) {
+        maxProgress = max;
+        invalidate();
+        return this;
+    }
+
     /**
      * 是否可用
      */

@@ -16,6 +16,7 @@
         android:minWidth="@dimen/item_name_min_width"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="12sp"

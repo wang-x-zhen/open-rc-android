@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_gravity="center"
         android:textColor="@color/white"
         android:textSize="@dimen/item_name_size"
         app:layout_constraintBottom_toBottomOf="parent"

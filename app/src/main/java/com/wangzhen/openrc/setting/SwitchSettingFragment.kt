@@ -12,13 +12,20 @@ import com.wangzhen.openrc.R
 import com.wangzhen.openrc.adapter.CommonAdapter
 import com.wangzhen.openrc.adapter.UserModelAdapter
 import com.wangzhen.openrc.data.Data
+import com.wangzhen.openrc.data.NULL_STR
+import com.wangzhen.openrc.dialog.InputDialog
+import com.wangzhen.openrc.dialog.SeekBarDialog
 import com.wangzhen.openrc.dialog.SelectListDialog
 import com.wangzhen.openrc.utils.SummerTools
+import com.wangzhen.openrc.vm.SettingViewModel
 import kotlinx.android.synthetic.main.fragment_switch_setting.view.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 class SwitchSettingFragment : Fragment() {
     lateinit var rootView: View
+    private val settingViewModel: SettingViewModel by sharedViewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +37,9 @@ class SwitchSettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRvList()
+        settingViewModel.modelListChange.observe(viewLifecycleOwner) {
+            initRvList()
+        }
     }
 
     private var userModelAdapter = UserModelAdapter()
@@ -37,8 +47,6 @@ class SwitchSettingFragment : Fragment() {
         rootView.model_rv.layoutManager = LinearLayoutManager(context).apply {
             this.orientation = LinearLayoutManager.VERTICAL
         }
-
-
         rootView.model_rv.adapter = userModelAdapter
         userModelAdapter.setOnClick { pos ->
             SummerTools.runOnIo {
@@ -75,13 +83,28 @@ class SwitchSettingFragment : Fragment() {
 
         rootView.gpio_input_rv.adapter = switchWithGpioAdapter
         switchWithGpioAdapter.setOnClick { pos ->
-
+            SelectListDialog(
+                arrayListOf(NULL_STR).apply {
+                    addAll(Data.gpioStringListEsp8266)
+                },
+                Data.switchWithGpioList[pos] + 1
+            ) { selectPos ->
+                Data.switchWithGpioList[pos] = selectPos - 1
+                settingViewModel.saveModel()
+                switchWithGpioAdapter.setDataList(Data.switchWithGpioList.map {
+                    if (it == -1) {
+                        "无"
+                    } else {
+                        Data.gpioStringListEsp8266[it]
+                    }
+                })
+            }.show(requireActivity().supportFragmentManager, "")
         }
         switchWithGpioAdapter.setDataList(Data.switchWithGpioList.map {
             if (it == -1) {
                 "无"
             } else {
-                Data.gpioList[it].name
+                Data.gpioStringListEsp8266[it]
             }
         })
     }
@@ -91,10 +114,16 @@ class SwitchSettingFragment : Fragment() {
         rootView.show_rv.layoutManager = LinearLayoutManager(context).apply {
             this.orientation = LinearLayoutManager.VERTICAL
         }
-
         rootView.show_rv.adapter = switchShowAdapter
         switchShowAdapter.setOnClick { pos ->
-
+            SelectListDialog(
+                Data.switchOffOnList,
+                Data.switchShowList[pos]
+            ) { selectPos ->
+                Data.switchShowList[pos] = selectPos
+                settingViewModel.saveModel()
+                bindDataSwitchShowAdapter()
+            }.show(requireActivity().supportFragmentManager, "")
         }
         switchShowAdapter.setDataList(Data.switchShowList.map {
             if (it == 1) {
@@ -103,6 +132,17 @@ class SwitchSettingFragment : Fragment() {
                 "关"
             }
         })
+    }
+
+    private fun bindDataSwitchShowAdapter() {
+        switchShowAdapter.setDataList(Data.switchShowList.map {
+            if (it == 1) {
+                "开"
+            } else {
+                "关"
+            }
+        })
+        switchShowAdapter.notifyDataSetChanged()
     }
 
     private var switchActiveAdapter = CommonAdapter()
@@ -118,6 +158,7 @@ class SwitchSettingFragment : Fragment() {
                 Data.switchActiveList[pos]
             ) { selectPos ->
                 Data.switchActiveList[pos] = selectPos
+                settingViewModel.saveModel()
                 bindDataSwitchActiveAdapter()
             }.show(requireActivity().supportFragmentManager, "")
         }
@@ -143,7 +184,14 @@ class SwitchSettingFragment : Fragment() {
 
         rootView.value1_rv.adapter = switch1Adapter
         switch1Adapter.setOnClick { pos ->
-
+            SeekBarDialog(Data.switch1ValueList[pos], 0, 180) { p ->
+                Data.switch1ValueList[pos] = p
+                settingViewModel.saveModel()
+                switch1Adapter.setDataList(Data.switch1ValueList.map {
+                    "$it"
+                })
+                switch1Adapter.notifyDataSetChanged()
+            }.show(requireActivity().supportFragmentManager, "")
         }
         switch1Adapter.setDataList(Data.switch1ValueList.map {
             "$it"
@@ -158,7 +206,14 @@ class SwitchSettingFragment : Fragment() {
 
         rootView.value2_rv.adapter = switch2Adapter
         switch2Adapter.setOnClick { pos ->
-
+            SeekBarDialog(Data.switch2ValueList[pos], 0, 180) { p ->
+                Data.switch2ValueList[pos] = p
+                settingViewModel.saveModel()
+                switch2Adapter.setDataList(Data.switch2ValueList.map {
+                    "$it"
+                })
+                switch2Adapter.notifyDataSetChanged()
+            }.show(requireActivity().supportFragmentManager, "")
         }
         switch2Adapter.setDataList(Data.switch2ValueList.map {
             "$it"
@@ -173,7 +228,14 @@ class SwitchSettingFragment : Fragment() {
 
         rootView.value3_rv.adapter = switch3Adapter
         switch3Adapter.setOnClick { pos ->
-
+            SeekBarDialog(Data.switch3ValueList[pos], 0, 180) { p ->
+                Data.switch3ValueList[pos] = p
+                switch3Adapter.setDataList(Data.switch3ValueList.map {
+                    "$it"
+                })
+                switch3Adapter.notifyDataSetChanged()
+                settingViewModel.saveModel()
+            }.show(requireActivity().supportFragmentManager, "")
         }
         switch3Adapter.setDataList(Data.switch3ValueList.map {
             "$it"

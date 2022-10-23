@@ -1,11 +1,12 @@
-package com.wangzhen.openrc
+package com.wangzhen.openrc.dialog
 
 import android.os.Bundle
 import android.view.*
 import androidx.annotation.Nullable
 import androidx.fragment.app.DialogFragment
+import com.wangzhen.openrc.R
 import com.wangzhen.openrc.view.CenterSeekBar
-import kotlinx.android.synthetic.main.input_dalog_layout.view.*
+import kotlinx.android.synthetic.main.scale_dalog_layout.view.*
 
 
 class ScaleDialog(
