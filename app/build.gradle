@@ -15,7 +15,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
-        versionName "1.0.9-dev" // TCP 通信控制 效果不太好
+        versionName "1.0.8" 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

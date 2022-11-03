@@ -1,0 +1,173 @@
+C:\Users\wangzhen\.platformio\penv\Scripts\platformio.exe -c clion run -e nodemcuv2
+Processing nodemcuv2 (platform: espressif8266; board: nodemcuv2; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif8266/nodemcuv2.html
+PLATFORM: Espressif 8266 (4.0.1) > NodeMCU 1.0 (ESP-12E Module)
+HARDWARE: ESP8266 160MHz, 80KB RAM, 4MB Flash
+PACKAGES:
+ - framework-arduinoespressif8266 @ 3.30002.0 (3.0.2)
+ - tool-esptool @ 1.413.0 (4.13)
+ - tool-esptoolpy @ 1.30000.201119 (3.0.0)
+ - toolchain-xtensa @ 2.100300.210717 (10.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 38 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- OneWire @ 2.3.7
+|-- ArduinoJson @ 6.19.4
+|-- ESP32-OTA @ 0.1.5+sha.99bf849
+|   |-- ESP8266WebServer @ 1.0
+|   |   |-- ESP8266WiFi @ 1.0
+|   |-- ESP8266mDNS @ 1.2
+|   |   |-- ESP8266WiFi @ 1.0
+|   |-- ESP8266WiFi @ 1.0
+|-- ESP8266WiFi @ 1.0
+|-- Servo @ 1.0.2
+Building in release mode
+Compiling .pio\build\nodemcuv2\src\main.cpp.o
+Generating LD script .pio\build\nodemcuv2\ld\local.eagle.app.v6.common.ld
+Compiling .pio\build\nodemcuv2\lib305\OneWire\OneWire.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\BearSSLHelpers.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\CertStoreBearSSL.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\ESP8266WiFi.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\ESP8266WiFiAP.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\ESP8266WiFiGeneric.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\ESP8266WiFiGratuitous.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\ESP8266WiFiMulti.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\ESP8266WiFiSTA-WPS.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\ESP8266WiFiSTA.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\ESP8266WiFiScan.cpp.o
+.pio\libdeps\nodemcuv2\OneWire\OneWire.cpp: In member function 'uint8_t OneWire::reset()':
+.pio\libdeps\nodemcuv2\OneWire\OneWire.cpp:167:24: warning: unused variable 'reg' [-Wunused-variable]
+  167 |  volatile IO_REG_TYPE *reg IO_REG_BASE_ATTR = baseReg;
+      |                        ^~~
+.pio\libdeps\nodemcuv2\OneWire\OneWire.cpp: In member function 'void OneWire::write_bit(uint8_t)':
+.pio\libdeps\nodemcuv2\OneWire\OneWire.cpp:201:24: warning: unused variable 'reg' [-Wunused-variable]
+  201 |  volatile IO_REG_TYPE *reg IO_REG_BASE_ATTR = baseReg;
+      |                        ^~~
+.pio\libdeps\nodemcuv2\OneWire\OneWire.cpp: In member function 'uint8_t OneWire::read_bit()':
+.pio\libdeps\nodemcuv2\OneWire\OneWire.cpp:229:24: warning: unused variable 'reg' [-Wunused-variable]
+  229 |  volatile IO_REG_TYPE *reg IO_REG_BASE_ATTR = baseReg;
+      |                        ^~~
+src\main.cpp: In function 'void setup()':
+src\main.cpp:62:15: warning: variable 'IP' set but not used [-Wunused-but-set-variable]
+   62 |     IPAddress IP = WiFi.softAPIP();
+      |               ^~
+Archiving .pio\build\nodemcuv2\lib305\libOneWire.a
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\WiFiClient.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\WiFiClientSecureBearSSL.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\WiFiServer.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\WiFiServerSecureBearSSL.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\WiFiUdp.cpp.o
+Compiling .pio\build\nodemcuv2\libed1\ESP8266WiFi\enable_wifi_at_boot_time.cpp.o
+Compiling .pio\build\nodemcuv2\libfaa\ESP8266WebServer\detail\mimetable.cpp.o
+Compiling .pio\build\nodemcuv2\lib64d\ESP8266mDNS\ESP8266mDNS.cpp.o
+Compiling .pio\build\nodemcuv2\lib64d\ESP8266mDNS\LEAmDNS.cpp.o
+Compiling .pio\build\nodemcuv2\lib64d\ESP8266mDNS\LEAmDNS_Control.cpp.o
+Compiling .pio\build\nodemcuv2\lib64d\ESP8266mDNS\LEAmDNS_Helpers.cpp.o
+Compiling .pio\build\nodemcuv2\lib64d\ESP8266mDNS\LEAmDNS_Structs.cpp.o
+Compiling .pio\build\nodemcuv2\lib64d\ESP8266mDNS\LEAmDNS_Transfer.cpp.o
+Archiving .pio\build\nodemcuv2\libfaa\libESP8266WebServer.a
+Compiling .pio\build\nodemcuv2\libebb\ESP32-OTA\WebOTA.cpp.o
+Compiling .pio\build\nodemcuv2\liba34\Servo\Servo.cpp.o
+Archiving .pio\build\nodemcuv2\libFrameworkArduinoVariant.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Crypto.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Esp-frag.cpp.o
+Archiving .pio\build\nodemcuv2\libed1\libESP8266WiFi.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Esp-version.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Esp.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\FS.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\FSnoop.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\FunctionalInterrupt.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\HardwareSerial.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\IPAddress.cpp.o
+Archiving .pio\build\nodemcuv2\liba34\libServo.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\LwipDhcpServer-NonOS.cpp.o
+Archiving .pio\build\nodemcuv2\lib64d\libESP8266mDNS.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\LwipDhcpServer.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\LwipIntf.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\LwipIntfCB.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\MD5Builder.cpp.o
+Archiving .pio\build\nodemcuv2\libebb\libESP32-OTA.a
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Print.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Schedule.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\StackThunk.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Stream.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\StreamSend.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Tone.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\TypeConversion.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\Updater.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\WMath.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\WString.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\abi.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\aes_unwrap.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\base64.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\cbuf.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\cont.S.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\cont_util.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_app_entry_noextra4k.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_eboot_command.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_features.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_flash_quirks.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_flash_utils.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_i2s.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_main.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_non32xfer.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_noniso.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_phy.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_postmortem.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_si2c.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_sigma_delta.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_spi_utils.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_timer.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_vm.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_waveform_phase.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_waveform_pwm.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_analog.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_digital.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_pulse.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_pwm.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\core_esp8266_wiring_shift.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\crc32.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\debug.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\exc-c-wrapper-handler.S.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\exc-sethandler.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\flash_hal.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\gdb_hooks.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\heap.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\hwdt_app_entry.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\libb64\cdecode.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\libb64\cencode.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\libc_replacements.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\mmu_iram.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\reboot_uart_dwnld.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_cache.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_check.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_gc.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_hydrogen.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs\spiffs_nucleus.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\spiffs_api.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\sqrt32.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\stdlib_noniso.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\time.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\uart.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_info.c.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_integrity.c.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_local.c.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_malloc.cpp.o
+Compiling .pio\build\nodemcuv2\FrameworkArduino\umm_malloc\umm_poison.c.o
+Archiving .pio\build\nodemcuv2\libFrameworkArduino.a
+Linking .pio\build\nodemcuv2\firmware.elf
+Retrieving maximum program size .pio\build\nodemcuv2\firmware.elf
+Checking size .pio\build\nodemcuv2\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [====      ]  36.3% (used 29776 bytes from 81920 bytes)
+Flash: [===       ]  32.0% (used 334052 bytes from 1044464 bytes)
+Building .pio\build\nodemcuv2\firmware.bin
+Creating BIN file ".pio\build\nodemcuv2\firmware.bin" using "C:\Users\wangzhen\.platformio\packages\framework-arduinoespressif8266\bootloaders\eboot\eboot.elf" and ".pio\build\nodemcuv2\firmware.elf"
+========================= [SUCCESS] Took 17.18 seconds =========================
+
+Process finished with exit code 0
